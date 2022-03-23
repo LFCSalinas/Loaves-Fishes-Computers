@@ -1,0 +1,251 @@
+<%- include("partials/header.ejs") %>
+
+
+<section>
+  <div class="profile-container">
+    <div class="profile-contents">
+
+      <div class="profile-img-container">
+        <div class="profile-img-fixed-container">
+          <% if (typeof user.image != "undefined" && user.image) { %>
+            <!-- <img src="http://localhost:5000/image/<%= user.image %>" width="300" class="profile-img" alt="user-image"> -->
+            <img src="https://minu-loaves-fishes-computers.herokuapp.com/image/<%= user.image %>" width="300" class="profile-img" alt="user-image">
+          <% } else { %>
+            <i class="far fa-user"></i>
+          <% } %>
+        </div>
+      </div>
+  
+      <div class="profile-info">
+
+        <div class="profile-info-container">
+
+          <div class="profile-info-contents">
+            <div class="profile-topbox">
+              <h2>Motivational Statement</h2>
+            </div>
+            <div class="profile-boxes">
+              <div class="profile-box">
+                <span style="font-weight: 500;"> <%= user.motivational_statement %> </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-info-contents">
+            <div class="profile-topbox">
+              <h2> Identity </h2>
+            </div>
+            <div class="profile-box">
+              <div class="profile-details">
+                <p>First name</p>
+              </div>
+              <span> <%= user.first_name %> </span>
+            </div>
+            <div class="profile-box">
+              <div class="profile-details">
+                <p>Last name</p>
+              </div>
+              <span> <%= user.last_name %> </span>
+            </div>
+            <div class="profile-box">
+              <div class="profile-details">
+                <p>Gender</p>
+              </div>
+              <span> <%= user.gender %> </span>
+            </div>
+            <div class="profile-box">
+              <div class="profile-details">
+                <p>Birthday</p>
+              </div>
+              <span> <%= user.birthday %> </span>
+            </div>
+            <div class="profile-box">
+              <div class="profile-details">
+                <p>Place of birth</p>
+              </div>
+              <span> <%= user.place_of_birth %> </span>
+            </div>
+          </div>
+
+          <div class="profile-info-contents">
+            <div class="profile-topbox">
+              <h2>Address</h2>
+            </div>
+            <div class="profile-boxes">
+              <div class="profile-box">
+                <div class="profile-details">
+                  <p>Street</p>
+                </div>
+                <span> <%= user.street %> </span>
+              </div>
+              <div class="profile-box">
+                <div class="profile-details">
+                  <p>City</p>
+                </div>
+                <span> <%= user.city %> </span>
+              </div>
+              <div class="profile-box">
+                <div class="profile-details">
+                  <p>State</p>
+                </div>
+                <% if(user.state === "Se") { %>
+                  <span></span>
+                <% } else { %>
+                  <span> <%= user.state %> </span>
+                <% } %>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-info-contents">
+            <div class="profile-topbox">
+              <h2>Contact</h2>
+            </div>
+            <div class="profile-boxes">
+              <div class="profile-box">
+                <div class="profile-details">
+                  <p>Phone</p>
+                </div>
+                <span> <%= user.phone %> </span>
+              </div>
+              <div class="profile-box">
+                <div class="profile-details">
+                  <p>Email</p>
+                </div>
+                <span> <%= user.email %> </span>
+              </div>
+              <div class="profile-box">
+                <div class="profile-details">
+                  <p>Other email</p>
+                </div>
+                <span> <%= user.other_email %> </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-info-contents">
+            <div class="profile-topbox">
+              <h2>Emergency</h2>
+            </div>
+            <div class="profile-boxes">
+              <div class="profile-box">
+                <div class="profile-details">
+                  <p>First name</p>
+                </div>
+                <span> <%= user.emergency_first_name %> </span>
+              </div>
+              <div class="profile-box">
+                <div class="profile-details">
+                  <p>Last name</p>
+                </div>
+                <span> <%= user.emergency_last_name %> </span>
+              </div>
+              <div class="profile-box">
+                <div class="profile-details">
+                  <p>Relation</p>
+                </div>
+                <span> <%= user.emergency_relation %> </span>
+              </div>
+              <div class="profile-box">
+                <div class="profile-details">
+                  <p>Phone</p>
+                </div>
+                <span> <%= user.emergency_phone %> </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-info-contents">
+            <div class="profile-topbox">
+              <h2>Experience</h2>
+            </div>
+            <div class="profile-boxes">
+              <div class="profile-box">
+                <div class="profile-details">
+                  <p>Company</p>
+                </div>
+                <span> <%= user.job1_company %> </span>
+              </div>
+              <div class="profile-box">
+                <div class="profile-details">
+                  <p>Job title</p>
+                </div>
+                <span> <%= user.job1_title %> </span>
+              </div>
+              <div class="profile-box">
+                <div class="profile-details">
+                  <p>Years</p>
+                </div>
+                <span> <%= user.job1_years %> </span>
+              </div>
+              <div class="profile-box">
+                <div class="profile-details">
+                  <p>Duties</p>
+                </div>
+                <span> <%= user.job1_duties %> </span>
+              </div>
+            </div>
+
+            <% if (user.job2_company) { %>
+            <div class="profile-boxes">
+              <div class="profile-box">
+                <div class="profile-details">
+                  <p>Company</p>
+                </div>
+                <span> <%= user.job2_company %> </span>
+              </div>
+              <div class="profile-box">
+                <div class="profile-details">
+                  <p>Job title</p>
+                </div>
+                <span> <%= user.job2_title %> </span>
+              </div>
+              <div class="profile-box">
+                <div class="profile-details">
+                  <p>Years</p>
+                </div>
+                <span> <%= user.job2_years %> </span>
+              </div>
+              <div class="profile-box">
+                <div class="profile-details">
+                  <p>Duties</p>
+                </div>
+                <span> <%= user.job2_duties %> </span>
+              </div>
+            </div>
+            <% } %>
+          </div>
+
+          <div class="profile-info-contents">
+            <div class="profile-topbox">
+              <h2>Skills</h2>
+            </div>
+            <div class="profile-box">
+              <span> <%= user.skills %> </span>
+            </div>
+          </div>
+
+          <div class="profile-info-contents">
+            <div class="profile-topbox">
+              <h2>Languages</h2>
+            </div>
+            <div class="profile-box">
+              <span> <%= user.languages %> </span>
+            </div>
+          </div>
+
+          <div class="profile-info-contents">
+            <div class="profile-topbox">
+              <a href="/profile-edit"><button id="edit-profile-btn">EDIT PROFILE</button></a>
+            </div>
+          </div>
+
+        </div>
+      </div>               
+    </div>
+  </div>
+</section>
+  
+<script src="/js/script.js"></script>
+
+<%- include("partials/footer.ejs") %>

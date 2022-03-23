@@ -1,0 +1,63 @@
+<%- include("partials/header.ejs") %>
+
+  <div class="container" style="padding: 20px 0;">
+    <div class="subcontainer">
+      <form action="/auth/find-user" method="POST" style="width:100%;">
+        <div class="admin">
+          <div>
+            <h2>User Management System</h2>
+          </div>
+          <div>
+            <input type="text" name="search" placeholder="Search"><button>Search</button>
+          </div>
+        </div>
+      </form>
+      <div class="admin">
+        <div class="admin-inner">
+          <a href="/admin" class="view"><i class="fa-solid fa-eye"></i> View Users</a>
+          <a href="/add-user" class="edit"><i class="fa-solid fa-user-plus"></i> Add User</a>
+        </div>
+      </div>
+      <div style="overflow-x: auto;width: 100%;">
+        <table>
+          <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th class="text-end">Action</th>
+          </tr>
+          <% for(let i=0;i < rows.length;i++) { %>
+            <tr>
+              <td>
+                <%= rows[i].id %>
+              </td>
+              <td>
+                <%= rows[i].first_name %>
+              </td>
+              <td>
+                <%= rows[i].last_name %>
+              </td>
+              <td>
+                <%= rows[i].email %>
+              </td>
+              <td>
+                <%= rows[i].status %>
+              </td>
+              <td class="text-end">
+                <a href="/view-user/<%= rows[i].id %>" class="view"><i class="fa-solid fa-eye"></i> View</a>
+                <a href="/edit-user/<%= rows[i].id %>" class="edit"><i class="fa-solid fa-pencil"></i> Edit</a>
+                <a href="/del-user/<%= rows[i].id %>" class="delete"><i class="fa-solid fa-user-minus"></i> Delete</a>
+              </td>
+            </tr>
+            <% } %>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="/js/script.js"></script>
+
+  <%- include("partials/footer.ejs") %>

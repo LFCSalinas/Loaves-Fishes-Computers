@@ -1,0 +1,103 @@
+<%- include("partials/header.ejs") %>
+
+<!-- MAP -->
+<section id="contact-map" class="fade">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3200.4750914153915!2d-121.66024298471399!3d36.663076579977066!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808df8f1e6f0cc77%3A0xc4b899aabe123623!2sValley%20Center%20Shopping%20Center%2C%20938%20S%20Main%20St%2C%20Salinas%2C%20CA%2093901!5e0!3m2!1sen!2sus!4v1637120707811!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="eager">
+    </iframe>
+</section>
+
+<section id="contact-us">
+    <div class="contact-us-container" >
+        <div class="contact-us-content">
+            <div class="contact-us-info-boxes">
+                <div class="contact-us-info-box">
+                    <div>
+                        <h1>Contact Info</h1>
+                    </div>
+                    <div class="contact-us-info-box-detail">
+                        <div style="width: 100px;">
+                            <strong>Address:</strong>
+                        </div>
+                        <div>
+                            <p>938 S Main Street</p>
+                            <p>Salinas, CA 93901</p>
+                            <p>United States</p>
+                        </div>
+                    </div>
+                    <div class="contact-us-info-box-detail">
+                        <div style="width: 100px;">
+                            <strong>Hours:</strong>
+                        </div>
+                        <div>
+                            <p>Tues - Sat 10AM - 4PM</p>
+                        </div>
+                    </div>
+                    <div class="contact-us-info-box-detail">
+                        <div style="width: 100px;">
+                            <strong>Phone:</strong>
+                        </div>
+                        <div>
+                            <p>(831) 393-9260</p>
+                        </div>
+                    </div>
+                    <div class="contact-us-info-box-detail">
+                        <div style="width: 100px;">
+                            <strong>Email:</strong>
+                        </div>
+                        <div>
+                            <p>volunteer@loavesfishescomputers.org</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-us-info-box">
+                    <div>
+                        <h1>Get Social</h1>
+                    </div>
+                    <div class="contact-us-social-media">
+                        <a href="https://www.youtube.com/user/LoavesFishesComputer" class="fab fa-youtube" target="_blank"></a>
+                        <a href="https://www.facebook.com/loavesfishescomputers" class="fab fa-facebook" target="_blank"></a>
+                        <a href="https://www.instagram.com/lfc.salinasca/" class="fab fa-instagram" target="_blank"></a>
+                        <a href="https://www.linkedin.com/company/loaves-fishes-&-computers-inc-/about/" class="fab fa-linkedin" target="_blank"></a>
+                      </div>
+                </div>
+            </div>
+            <form action="/auth/contact-us-email" method="POST" id="contact-us-form">
+                <div>
+                    <h1>Get in Touch with Us</h1>
+                </div>
+                <div>
+                    <p>Want to learn more about the work we do at Loaves Fishes Computers? Or perhaps you want to setup a meeting for a tour around the office? Contact us today!</p>
+                </div>
+                <div class="contact-us-form-detail">
+                    <label for="name">Your Name</label>
+                    <input type="text" name="name" id="name" maxlength="30" required>
+                </div>
+                <div class="contact-us-form-detail">
+                    <label for="user_email">Your Email</label>
+                    <input type="email" name="email" id="email" maxlength="100" required>
+                </div>
+                <div class="contact-us-form-detail">
+                    <label for="message">Your Message</label>
+                    <textarea name="message" id="message" required></textarea>
+                </div>
+                <div>
+                    <button type="submit" class="g-recaptcha" data-sitekey="6LfNj-keAAAAACbPznMW6DDIxOGjMpOB6IgCAU39"
+        data-callback="contactFormRequest">SEND MESSAGE</button>
+                </div>
+                <% if(typeof success !="undefined" && success) { %>
+                    <div class="alert-message-success">
+                        <%= message %>
+                    </div>
+                <% } else if(typeof success !="undefined" && !success) { %>
+                    <div class="alert-message-error">
+                        <%= message %>
+                    </div>
+                <% } %>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script src="/js/script.js"></script>
+
+<%- include("partials/footer.ejs") %>

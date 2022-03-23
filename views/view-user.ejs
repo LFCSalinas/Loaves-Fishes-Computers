@@ -1,0 +1,334 @@
+<%- include("partials/header.ejs") %>
+
+  <div class="container" style="padding: 20px 0;">
+    <div class="subcontainer">
+
+        <!-- BREAD CRUMBS -->
+        
+        <div class="flex-2">
+          <a href="/admin">Admin</a> / <p>View User</p>
+        </div>
+
+
+        <!-- USER IMAGE -->
+
+
+        <div class="profile-img-container">
+          <div class="profile-img-fixed-container">
+            <% if (rows[0].image != null) { %>
+              <!-- <img src="http://localhost:5000/user-image/<%= rows[0].id %>/<%= rows[0].image %>" width="300" class="profile-img" alt="user-image"> -->
+              <img src="https://minu-loaves-fishes-computers.herokuapp.com/user-image/<%= rows[0].id %>/<%= rows[0].image %>" width="300" class="profile-img" alt="user-image">
+              <% } else { %>
+                <i class="far fa-user"></i>
+            <% } %>
+          </div>
+        </div>
+        
+        <!-- ACCOUNT TABLE -->
+
+        <br>
+        <div style="width: 100%;text-align: left;">
+          <h2>ACCOUNT</h2>
+        </div>
+
+        <div style="overflow-x:auto; width: 100%;">
+          <table class="view-user-table">
+            <tr>
+              <th>ID</th>
+              <th>Member Since</th>
+              <th>Status</th>
+              <th>Admin</th>
+            </tr>
+            <tr>
+              <td>
+                <%= rows[0].id %>
+              </td>
+              <td>
+                <%= rows[0].member_since %>
+              </td>
+              <td>
+                <%= rows[0].status %>
+              </td>
+              <td>
+                <%= rows[0].admin %>
+              </td>
+            </tr>
+          </table>
+        </div>
+        
+
+        <!-- PERSONAL TABLE -->
+        
+        <br>
+        <div style="width: 100%;text-align: left;">
+          <h2>PERSONAL</h2>
+        </div>
+        
+        <div style="overflow-x:auto; width: 100%;">
+          <table class="view-user-table">
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Birthday</th>
+              <th>Gender</th>
+            </tr>
+            <tr>
+              <td>
+                <%= rows[0].first_name %>
+              </td>
+              <td>
+                <%= rows[0].last_name %>
+              </td>
+              <td>
+                <%= rows[0].birthday %>
+              </td>
+              <td>
+                <%= rows[0].gender %>
+              </td>
+            </tr>
+          </table>
+        </div>
+        
+        <!-- PERSONAL TABLE CONTINUED -->
+        
+        <br>
+        <div style="width: 100%;text-align: left;">
+          <h2>ADDRESS</h2>
+        </div>
+
+        <div style="overflow-x:auto; width: 100%;">
+          <table class="view-user-table">
+            <tr>
+              <th>Street</th>
+              <th>City</th>
+              <th>State</th>
+              <th>Place of birth</th>
+            </tr>
+            <tr>
+              <td>
+                <%= rows[0].street %>
+              </td>
+              <td>
+                <%= rows[0].city %>
+              </td>
+              <td>
+                <%= rows[0].state %>
+              </td>
+              <td>
+                <%= rows[0].place_of_birth %>
+              </td>
+            </tr>
+          </table>
+        </div>
+        
+
+        <!-- CONTACT TABLE -->
+
+        <br>
+        <div style="width: 100%;text-align: left;">
+          <h2>CONTACT</h2>
+        </div>
+
+        <div style="overflow-x:auto; width: 100%;">
+          <table class="view-user-table">
+            <tr>
+              <th>Email</th>
+              <th>Other email</th>
+              <th>Phone</th>
+            </tr>
+            <tr>
+              <td>
+                <%= rows[0].email %>
+              </td>
+              <td>
+                <%= rows[0].other_email %>
+              </td>
+              <td>
+                <%= rows[0].phone %>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+
+        <!-- EMERGENCY TABLE -->
+        
+        <br>
+        <div style="width: 100%;text-align: left;">
+          <h2>EMERGENCY</h2>
+        </div>
+
+        <div style="overflow-x:auto; width: 100%;">
+          <table class="view-user-table">
+            <tr>
+              <th>First name</th>
+              <th>Last name</th>
+              <th>Relation</th>
+              <th>Phone</th>
+            </tr>
+            <tr>
+              <td>
+                <%= rows[0].emergency_first_name %>
+              </td>
+              <td>
+                <%= rows[0].emergency_last_name %>
+              </td>
+              <td>
+                <%= rows[0].emergency_relation %>
+              </td>
+              <td>
+                <%= rows[0].emergency_phone %>
+              </td>
+            </tr>
+          </table>
+        </div>
+       
+
+        <!-- EMPLOYMENT TABLE -->
+        
+        <br>
+        <div style="width: 100%;text-align: left;">
+          <h2>EMPLOYMENT</h2>
+        </div>
+        
+        <div style="overflow-x:auto; width: 100%;">
+          <table class="view-user-table">
+            <tr>
+              <th>Company</th>
+              <th>Position</th>
+              <th>Years</th>
+            </tr>
+            <tr>
+              <td>
+                <%= rows[0].job1_company %>
+              </td>
+              <td>
+                <%= rows[0].job1_title %>
+              </td>
+              <td>
+                <%= rows[0].job1_years %>
+              </td>
+            </tr>
+          </table>
+        </div>
+        
+        <table class="view-user-table">
+          <tr>
+            <th>Duties</th>
+          </tr>
+          <tr>
+            <td style="white-space: normal;">
+              <%= rows[0].job1_duties %>
+            </td>
+          </tr>
+        </table>
+
+        <div style="overflow-x:auto; width: 100%;">
+          <table class="view-user-table">
+            <tr>
+              <th>Company</th>
+              <th>Position</th>
+              <th>Years</th>
+            </tr>
+            <tr>
+              <td>
+                <%= rows[0].job2_company %>
+              </td>
+              <td>
+                <%= rows[0].job2_title %>
+              </td>
+              <td>
+                <%= rows[0].job2_years %>
+              </td>
+            </tr>
+          </table>
+        </div>
+       
+
+        <table class="view-user-table">
+          <tr>
+            <th>Duties</th>
+          </tr>
+          <tr>
+            <td style="white-space: normal;">
+              <%= rows[0].job2_duties %>
+            </td>
+          </tr>
+        </table>
+
+        <!-- SKILLS TABLE -->
+        
+        <br>
+        <div style="width: 100%;text-align: left;">
+          <h2>SKILLS</h2>
+        </div>
+        
+        <table class="view-user-table">
+          <tr>
+            <th>Skills</th>
+          </tr>
+          <tr>
+            <td style="white-space: normal;">
+              <%= rows[0].skills %>
+            </td>
+          </tr>
+        </table>
+
+
+        <!-- LANGUAGES TABLE -->
+        
+        <br>
+        <div style="width: 100%;text-align: left;">
+          <h2>LANGUAGES</h2>
+        </div>
+        
+        <table class="view-user-table">
+          <tr>
+            <th>Languages</th>
+          </tr>
+          <tr>
+            <td style="white-space: normal;">
+              <%= rows[0].languages %>
+            </td>
+          </tr>
+        </table>
+        
+        <!-- MOTIVATIONAL STATEMENT TABLE -->
+
+        <br>
+        <div style="width: 100%;text-align: left;">
+          <h2>MOTIVATION STATEMENT</h2>
+        </div>
+        
+        <table>
+          <tr>
+            <th>Motivation Statement</th>
+          </tr>
+          <tr>
+            <td style="white-space: normal;">
+              <%= rows[0].motivational_statement %>
+            </td>
+          </tr>
+        </table>
+
+
+        <!-- VOLUNTEER FORMS -->
+        
+        <br>
+        <div style="width: 100%;text-align: left;">
+          <h2>VOLUNTEER FORMS</h2>
+        </div>
+
+        <% if (rows[0].forms != null) { %>
+          <div style="width: 100%;text-align: left;">
+            <!-- <a href="http://localhost:5000/user-forms/<%= rows[0].id %>/<%= rows[0].forms %>" target="_blank">LFC Volunteer Forms</a> -->
+            <a href="https://minu-loaves-fishes-computers.herokuapp.com/user-forms/<%= rows[0].id %>/<%= rows[0].forms %>" target="_blank">LFC Volunteer Forms</a>
+          </div>
+        <% } %>
+
+    </div>
+  </div>
+
+  <script src="/js/script.js"></script>
+
+  <%- include("partials/footer.ejs") %>

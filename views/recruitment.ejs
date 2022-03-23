@@ -1,0 +1,124 @@
+<%- include("partials/header.ejs") %>
+
+<!-- MODAL -->
+<div id="modal-overlay">
+  <div id="modal">
+    <div class="modal-box-1">
+      <i class="fas fa-desktop"></i>
+      <h1>LFC</h1>
+    </div>
+    <form action="/auth/apply-email-recruitment" method="POST" id="apply-form" class="modal-box-2">
+      <div class="flex">
+        <h1>APPLY TODAY!</h1>
+        <i class="fas fa-times" id="close-modal-btn"></i>
+      </div>
+      <p>Send us your information and a staff member will contact you soon.</p>
+      <input type="text" name="full_name" id="full-name" placeholder="Full name" maxlength="30" required>
+      <input type="text" name="phone" id="phone" placeholder="Phone" maxlength="12" required>
+      <input type="email" name="email" id="email" placeholder="Email" maxlength="100" required>
+      <button type="submit" class="g-recaptcha" data-sitekey="6LfNj-keAAAAACbPznMW6DDIxOGjMpOB6IgCAU39"
+        data-callback="applyFormRequest">SUBMIT</button>
+      <% if(typeof success != "undefined" && success) { %>
+        <div class="alert-message-success">
+          <%= message %>
+        </div>
+      <% } else if(typeof success != "undefined" && !success) { %>
+        <div class="alert-message-error">
+          <%= message %>
+        </div>
+      <% } %>
+    </form>
+  </div>
+</div>
+
+<section id="recruitment-carousel-showcase" class="fade">
+  <div class="overlay">
+    <div class="container">
+      <div class="subcontainer recruitment-carousel-section">
+        <div class="recruitment-carousel-showcase-header">
+          <h1>Learn</h1>
+          <h1>About</h1>
+          <h1>LFC's</h1>
+          <h1>Volunteers</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="recruitment-positions">
+  <div class="professors">
+    <div class="recruitment-position">
+      <div class="recruitment-position-content">
+        <div class="recruitment-img professor"></div>
+        <div class="recruitment-paragraph" style="color: black;">
+          <h1><i class="fas fa-user-tie"></i> PROFESSORS</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui facere quos ipsum, consequatur saepe sit error
+            voluptatem eos a. Inventore magnam vitae temporibus soluta mollitia hic, est tenetur ex, ullam explicabo eum
+            veritatis iste voluptatem vel neque accusantium quis blanditiis atque velit aliquid fugit quisquam eaque! Dicta, in.
+            Nihil, ea?</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="college-students">
+    <div class="recruitment-position">
+      <div class="recruitment-position-content rp">
+        <div class="recruitment-paragraph">
+          <h1><i class="fas fa-university"></i> COLLEGE STUDENTS</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui facere quos ipsum, consequatur saepe sit error
+            voluptatem eos a. Inventore magnam vitae temporibus soluta mollitia hic, est tenetur ex, ullam explicabo eum
+            veritatis
+            iste voluptatem vel neque accusantium quis blanditiis atque velit aliquid fugit quisquam eaque! Dicta, in. Nihil,
+            ea?
+          </p>
+        </div>
+        <div class="recruitment-img college-student"></div>
+      </div>
+    </div>
+  </div>
+  <div class="highschool-students">
+    <div class="recruitment-position">
+      <div class="recruitment-position-content">
+        <div class="recruitment-img highschool-student"></div>
+        <div class="recruitment-paragraph">
+          <h1><i class="fas fa-school"></i> HIGH SCHOOL STUDENTS</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui facere quos ipsum, consequatur saepe sit error
+            voluptatem eos a. Inventore magnam vitae temporibus soluta mollitia hic, est tenetur ex, ullam explicabo eum veritatis
+            iste voluptatem vel neque accusantium quis blanditiis atque velit aliquid fugit quisquam eaque! Dicta, in. Nihil, ea?
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="referrals">
+    <div class="recruitment-position">
+      <div class="recruitment-position-content rp">
+        <div class="recruitment-paragraph" style="color: black;">
+          <h1><i class="fas fa-hard-hat"></i> REFERRALS</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui facere quos ipsum, consequatur saepe sit error
+            voluptatem eos a. Inventore magnam vitae temporibus soluta mollitia hic, est tenetur ex, ullam explicabo eum
+            veritatis
+            iste voluptatem vel neque accusantium quis blanditiis atque velit aliquid fugit quisquam eaque! Dicta, in. Nihil,
+            ea?
+          </p>
+        </div>
+        <div class="recruitment-img referral"></div>
+      </div>  
+    </div>
+  </div>
+  <div class="recruitment-position  join">
+    <div class="recruitment-container-content">
+      <h1>JOIN OUR TEAM OF VOLUNTEERS!</h1>
+      <p style="font-weight: 100;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis assumenda quos iste vel minima exercitationem
+        recusandae eligendi, corrupti soluta dolore expedita voluptatum delectus eum iusto doloribus, in consequatur porro!
+        Eum, saepe doloremque et nihil officia fugit cupiditate. Amet, esse praesentium labore ratione totam commodi unde
+        itaque eligendi sapiente doloribus asperiores.</p>
+      <div class="button-box" id="show-modal-button"><i class="fas fa-user-plus"></i> APPLY</div>
+    </div>
+  </div>
+</section>
+
+<script src="/js/script.js"></script>
+
+<%- include("partials/footer.ejs") %>

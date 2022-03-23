@@ -1,0 +1,75 @@
+<%- include("partials/header.ejs") %>
+
+  <div class="container" style="padding: 20px 0;">
+    <div class="subcontainer">
+        <div class="flex-2">
+          <a href="/admin">Admin</a> / <p>New User</p>
+        </div>
+        <form action="/auth/add-user" id="add-user-form" method="POST">
+          <div class="first-name-container">
+            <input type="text" id="first-name" name="first_name" maxlength="25" placeholder="First name"
+              value="<%= typeof first_name != 'undefined' ? first_name : '' %>" required>
+          </div>
+          <div class="last-name-container">
+            <input type="text" id="last-name" name="last_name" maxlength="25" placeholder="Last name"
+              value="<%= typeof last_name != 'undefined' ? last_name : '' %>" required>
+          </div>
+          <div class="email-container">
+            <input type="email" id="email" name="email" maxlength="50" placeholder="Email"
+              value="<%= typeof email != 'undefined' ? email : '' %>" required>
+          </div>
+          <div class="password-container">
+            <input type="password" id="password" name="password" maxlength="60" placeholder="Password"
+              value="<%= typeof password != 'undefined' ? password : '' %>" required>
+            <p id="password-strength-text"></p>
+          </div>
+          <div class="password-container">
+            <input type="password" id="password-confirm" name="password_confirm" maxlength="60"
+              placeholder="Confirm password" required>
+          </div>
+          <div class="show-password-container">
+            <div>
+              <input type="checkbox" id="show-password">
+              <label for="show-password">Show password</label>
+            </div>
+          </div>
+          <div class="admin-user-radios">
+            <div>
+              <label><i class="fas fa-exclamation-triangle"></i> <strong>WARNING</strong> - Make this user an
+                admin?</label>
+            </div>
+            <div>
+              <input type="radio" name="admin" value="Yes" required>
+              <label for="Yes">Yes</label>
+              <br>
+              <input type="radio" name="admin" value="No" checked required>
+              <label for="No">No</label>
+            </div>
+          </div>
+          <div class="register-btn-container">
+            <button id="account-btn"><i class="fa-solid fa-user-plus" style="color: white;"></i> Add User</button>
+          </div>
+          <% if (typeof allParsedErrors !="undefined" && allParsedErrors) { %>
+            <% for(let i=0; i < allParsedErrors.errors.length; i++ ) { %>
+              <div class="alert-message-error">
+                <%= (allParsedErrors.errors[i].msg) %>
+              </div>
+            <% } %>
+          <% } %>
+          <% if(typeof success !="undefined" && success) { %>
+            <div class="alert-message-success">
+              <%= message %>
+            </div>
+          <% } %>
+          <% if(typeof success !="undefined" && !success) { %>
+            <div class="alert-message-error">
+              <%= message %>
+            </div>
+          <% } %>
+        </form>
+    </div>
+  </div>
+
+  <script src="/js/script.js"></script>
+
+  <%- include("partials/footer.ejs") %>

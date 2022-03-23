@@ -1,0 +1,663 @@
+<%- include("partials/header.ejs") %>
+
+
+<!-- Over 18 years form -->
+
+<div class="container">
+    <div class="subcontainer">
+
+        <form action="/auth/submit-forms" method="POST" id="submit-forms">
+
+            <br>
+
+            <!-- Page 1 - Volunteer Commitment Form_ COVID-19 -->
+
+
+            <div class="page">
+                <div class="page-contents">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <p>Loaves, Fishes, Computers</p>
+                            <p>938 South Main Street</p>
+                            <p>Salinas, CA 93901</p>
+                        </div>
+                        <img src="/img/lfc_logo.png" alt="">
+                    </div>
+                    <div>
+                        <h2>Volunteer Commitment Form: COVID-19</h2>
+                    </div>
+                    <div>
+                        <p>First and foremost, <strong>welcome to LFC</strong> and <strong>welcome back</strong> to some! We are so happy to have you volunteer
+                            with us. Since the COVID-19 pandemic, there have been changes in the way LFC looks as well as new
+                            practices and protocols regarding the volunteer program. We understand that these changes may be
+                            difficult and we are here to support you. Our goal is to collaboratively ensure you feel safe and secure so
+                            together we can navigate the complexities of our “new normal”.
+                        </p>
+                    </div>
+
+                    <div>
+                        <p>Here are some things we are implementing to help keep LFC safe and to support you:</p>
+                        <li>Must wear a face mask while volunteering</li>
+                        <li>Practice social distancing at all times.</li>
+                        <li>Clock in through the Humanity app on your phone, if you sign in through our
+                            computer then please sanitize the keyboard after every use.</li>
+                        <li>Receive your assigned volunteer position and station at the beginning of every shift:
+                            volunteers are only allowed to sit at the labeled “workstation”.</li>
+                        <li>More frequent cleaning and sanitizing at all volunteer stations: you must clean your work
+                            station before starting, throughout your shift, and before leaving LFC.</li>
+                        <li>More frequent hand washing and hand sanitizing throughout your shift: you must wash
+                            and/or sanitize your hands after using the bathroom, after using the snack closet/fridge,
+                            after using the coffee table, and multiple times throughout your shift.</li>
+                        <li>Access to hand sanitizer throughout LFC: one hand sanitizing station across from the
+                            bathroom, one hand sanitizing station before entering the refurb/burn-in department, and
+                            one hand sanitizing station in the back room.</li>
+                        <li><strong>You may not come to LFC unless you have an approved scheduled shift or you are
+                            interested in purchasing from us: volunteers will not be able to come in whenever
+                            they’d like.</strong>
+                        </li>
+                        <li>New limits on the number of people allowed to gather in LFC: no more than 17 volunteers
+                            allowed in the building at any given time, 7-refurb, 3-burn in, 2-repairs, 2-front
+                            desk, 3-Chromebooks/backroom
+                        </li>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="page">
+                <div class="page-contents">
+                    <div>
+                        <p>Here are some things we expect you to implement to help keep LFC safe:</p>
+                        <li><strong>Stay/go home if you feel sick. If you have any symptoms of COVID-19, please stay
+                                home for 14 days after your symptoms have cleared up.</strong></li>
+                        <li>Wash your hands often, and for the recommended 20 seconds.</li>
+                        <li>Stay at least 6 feet apart when moving through LFC and while speaking to others.
+                        </li>
+                        <li>You may, but are not required to, wear gloves while volunteering.
+                        </li>
+                        <li>Be considerate of others (remember, we’re all in this together).
+                        </li>                    
+                    </div>
+                    <div>
+                        <li>Call, email, message, or video conference LFC: do not arrive unannounced.
+                        </li>
+                        <li>Tell others to participate in these safety measures if they are not.</li>
+                    </div>
+                    <div>
+                        <strong>Speak with any of the staff members if you have any questions or concerns:</strong>
+                    </div>
+
+                    <div>
+                        <p>*Staff Members:</p>
+                        <li><strong>Gabriela López Chávez - Executive Director</strong><br><a href="#">gabriela@loavesfishescomputers.org
+                        </a>
+                        </li>
+                        <li><strong>Evens Lanot-Program Delivery and Operations Manager</strong><br><a href="#">evens@loavesfishescomputers.org
+
+                        </a>
+                        </li>
+                        <li><strong>Azalea Power-Digital Fluency Project Manager</strong><br><a href="#">azalea@loavesfishescomputers.org
+
+                        </a>
+                        </li>
+                        <li><strong>Junior Muñoz- Refurbishing Manager</strong><br><a href="#">juniormunoz@loavesfishescomputers.org
+
+                        </a>
+                        </li>
+                        <li><strong>Andrea Cruz Montes- Computer Literacy Instructor & Coordinator</strong><br><a href="#">andrea@loavesfishescomputers.org
+
+                        </a>
+                        </li>
+                        <li><strong>Marci Yeater-AmeriCorps VIP Fellow (Volunteer Coordinator)
+                        </strong><br><a href="#">volunteer@loavesfishescomputers.org
+                        </a>
+                        </li>
+                    </div>
+                    <div>
+                        <p>By signing below you are acknowledging that you have read, understand, and commit to implementing
+                            the above guidelines to the best of your ability while at LFC.</p>
+                    </div>
+                    <div class="volunteer-form">
+                        <div class="volunteer-form-subcontainer">
+                            <label for="form1_volunteer_name">* Name</label>
+                            <input type="text" name="form1_volunteer_name" id="form1_volunteer_name">
+                        </div>
+                        <div class="volunteer-form-subcontainer">
+                            <label for="form1_volunteer_date">* Date</label>
+                            <input type="date" name="form1_volunteer_date" id="form1_volunteer_date">
+                        </div>
+                        <div class="volunteer-form-subcontainer">
+                            <label for="form1_volunteer_signature">* Signature</label>
+                            <input type="text" name="form1_volunteer_signature" id="form1_volunteer_signature"> 
+                        </div>                  
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="page">
+                <div class="page-contents">
+                    <div>
+                        <p>Parent/Guardians of Minors</p>
+                    </div>
+                    <div>
+                        <p>I, the undersigned, am the parent or guardian of a minor volunteer, under eighteen years of age. I consent
+                            to my child volunteering at Loaves, Fishes & Computers post COVID-19 under the guidelines stated
+                            above.
+                        </p>
+                    </div>
+                    <div class="volunteer-form-subcontainer">
+                        <label for="form1_parent_name">Name</label>
+                        <input type="text" name="form1_parent_name" id="form1_parent_name">
+                    </div>                 
+                    <div class="volunteer-form-subcontainer">
+                        <label for="form1_parent_date">Date</label>
+                        <input type="date" name="form1_parent_date" id="form1_parent_date">
+                    </div>                 
+                    <div class="volunteer-form-subcontainer">
+                        <label for="form1_parent_signature">Signature</label>
+                        <input type="text" name="form1_parent_signature" id="form1_parent_signature">
+                    </div>                 
+                </div>
+            </div>
+
+            <br>
+
+            <!-- Form 2 - Non-Discrimination and Anti-Harassment Form -->
+            <div class="page"> 
+                <div class="page-contents">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <p>Loaves, Fishes, Computers</p>
+                            <p>938 South Main Street</p>
+                            <p>Salinas, CA 93901</p>
+                        </div>
+                        <img src="/img/lfc_logo.png" alt="">
+                    </div>
+                    <div>
+                        <h2 style="text-align: left;">LFC NON-DISCRIMINATION AND ANTI- HARASSMENT POLICY ACKNOWLEDGMENT</h2>
+                    </div>
+                    <div>
+                        <h3>INTENT</h3>
+                        <p>Loaves, Fishes & Computers (LFC) believes that respectful, professional conduct furthers our mission, promotes productivity, minimizes disputes, and enhances our reputation. LFC expects every volunteer and employee to show respect for all of our colleagues, clients, and vendors. Harassment by volunteers, employees, or any third parties is a form of misconduct that degrades our environment and undermines the integrity of LFC’s relationship with the community. LFC is committed to providing a work environment that is free of unlawful discrimination, including harassment that is based on any legally protected status. LFC will not tolerate any form of discrimination or harassment that violates this policy.
+                        </p>
+                    </div>
+                    <div>
+                        <h3>NON-DISCRIMINATION</h3>
+                        <p>LFC does not discriminate in volunteer or employment opportunities/practices on the basis of race, color, religion, disability, national origin, genetic information, sex (including pregnancy), age, sexual orientation, gender (including gender identity and expression), marital status, protected veterans status, citizenship status or any other characteristic protected by applicable law.</p>                    
+                    </div>
+                    <div>
+                        <p>Our policy of Non-discrimination in volunteer and employment applies to recruitment, hiring, compensation, promotions, transfers, discipline, demotions, terminations, layoffs, access to benefits and training and all other aspects of volunteering and employment.</p>      
+                    </div>
+                    <div>
+                        <p>Volunteers and employees with questions or concerns about any type of discrimination in the workplace are encouraged to bring these issues to the attention of their Manager or any other staff member. Volunteers and employees can voice concerns and submit reports without fear of retaliation. Any LFC volunteer or employee found to be engaging in any type of unlawful discrimination will be subject to disciplinary action, up to and including termination.</p> 
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="page">
+                <div class="page-contents">
+                    <div>
+                        <h3>HARASSMENT PROHIBITED</h3>
+                        <p>We will provide a safe and pleasant environment where everyone is treated with fairness and respect. It is against LFC policy for any volunteer or employee to verbally or physically harass or discriminate against another volunteer/ client on the basis of an individual’s race, color, religion, national origin, genetic information, sex (including pregnancy), age, sexual orientation, gender (including gender identity and expression), marital status, protected veterans status, citizenship status or any other characteristic protected by applicable law. Harassment of volunteers or employees at LFC by any third party will not be tolerated either. Any volunteer or employee who violates the company policy against harassment will be subject to corrective action, up to and including termination.</p>
+                    </div>
+                    <div>
+                        <p>The conduct prohibited by this policy, whether verbal, physical, or visual, includes any discriminatory action and any welcome or unwelcome conduct that is inflicted on someone because of that individual’s protected status. Among the types of conduct prohibited by this policy are epithets, slurs, jokes, negative stereotyping, intimidating acts, and the circulation or posting of written or graphic materials that show hostility toward individuals because of their protected status. LFC prohibits that conduct in the shop, even if the conduct is not sufficiently severe or pervasive to constitute unlawful harassment.
+                        </p>
+                    </div>
+                    <div>
+                        <h3>SEXUAL HARASSMENT</h3>
+                        <p>Sexual harassment is defined as unwelcome sexual advances; requests for sexual favors and other verbal or physical conduct where:</p>
+                        <li>Submission to such conduct is either an explicit or implicit condition of commitment or employment</li>
+                        <li>Submission to, or rejection of, such conduct is used as the basis for decisions affecting the person involved</li>
+                        <li>Such conduct has the purpose or effect of substantially interfering with an individual’s work performance or creating an intimidating, hostile or offensive environment</li>
+                    </div>
+                    <div>
+                        <p>This policy forbids harassment based on gender regardless of whether the offensive conduct is sexual in nature and regardless of whether it rises to the level of a legal violation. Any unwelcome conduct based on gender is also forbidden by this policy regardless of whether the individual engaged in harassment and the individual being harassed are of the same or are of different genders.</p>
+                    </div>
+                    <div>
+                        <p>Examples of gender-based harassment forbidden by this policy include (1) offensive sex-oriented verbal kidding, teasing or jokes; (2) repeated unwanted sexual flirtations, advances or propositions;</p>
+                    </div>                
+                </div>
+            </div>
+
+            <br>
+
+            <div class="page">
+                <div class="page-contents">
+                    <div>
+                        <p> (3) verbal abuse of a sexual nature; (4) graphic or degrading comments about an individual’s appearance or sexual activity; (5) offensive visual conduct, including leering, making sexual gestures, the display of offensive sexually suggestive objects or pictures, cartoons or posters; (6) unwelcome pressure for sexual activity; (7) offensively suggestive or obscene letters, notes or invitations; or (8) offensive physical contact such as patting, grabbing, pinching, or brushing against another’s body.</p>
+                    </div>
+                    <div>
+                        <h3>REPORTING PROCEDURES</h3>
+                        <p>Any employee who believes he or she has experienced or witnessed any conduct that is in
+                            violation of this policy should report that concern to a member of our staff* immediately. These are the individuals authorized by this policy to receive complaints on behalf of LFC. This policy does not require reporting harassment to any individual who is creating the harassment.
+                        </p>
+                    </div>                  
+                    <div>
+                        <p>Complaints may be made orally or in writing. To file a complaint in writing, please fill out the
+                            Harassment, Discrimination, or Retaliation Complaint Form*. If a complaint is made orally, the
+                            employee/volunteer may be asked for a written statement during the investigation. All
+                            complaints, to the extent possible, should include dates, times, location, details of the incident(s),
+                            names of the individuals involved and the names of witnesses to the incident(s). All complaints
+                            will be forwarded immediately to the Executive Director. Any supervisor who is aware of
+                            conduct inconsistent with this policy or who receives or learns of a report of conduct inconsistent
+                            with this policy must report such conduct immediately to the Executive Director.
+                        </p>
+                    </div>
+                    <div>
+                        <strong>*Staff Members:</strong>
+                        <li><strong>Gabriela López Chávez - Executive Director</strong><br><a href="#">gabriela@loavesfishescomputers.org
+                        </a>
+                        </li>
+                        <li><strong>Evens Lanot-Program Delivery and Operations Manager</strong><br><a href="#">evens@loavesfishescomputers.org
+
+                        </a>
+                        </li>
+                        <li><strong>Azalea Power-Digital Fluency Project Manager</strong><br><a href="#">azalea@loavesfishescomputers.org
+
+                        </a>
+                        </li>
+                        <li><strong>Junior Muñoz- Refurbishing Manager</strong><br><a href="#">juniormunoz@loavesfishescomputers.org
+
+                        </a>
+                        </li>
+                        <li><strong>Andrea Cruz Montes- Computer Literacy Instructor & Coordinator</strong><br><a href="#">andrea@loavesfishescomputers.org
+
+                        </a>
+                        </li>
+                        <li><strong>Marci Yeater-AmeriCorps VIP Fellow (Volunteer Coordinator)
+                        </strong><br><a href="#">volunteer@loavesfishescomputers.org
+                        </a>
+                        </li>
+                    </div>
+                    <div>
+                        <p>If the person feeling harassed does not feel comfortable bringing it to the attention of the staff
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="page">
+                <div class="page-contents">
+                    <div>
+                        <p> members, then they are welcome and encouraged to contact the LFC board chair, Stephen Bernasconi, at <a href="">stephen.b@loavesfishescomputers.org.</a></p>
+                    </div>
+                    <div>
+                        <h3>RESPONDING TO COMPLAINTS</h3>
+                        <p>All reports describing conduct that is inconsistent with this policy will be investigated promptly
+                            and thoroughly. Volunteers and employees are required to cooperate in investigations. LFC is
+                            committed to maintaining confidentiality to the extent possible. LFC will take all reasonable
+                            measures to ensure that the situation is divulged only to those with a need to know.
+                        </p>
+                    </div>
+                    <div>
+                        <h3>CORRECTIVE ACTION</h3>
+                        <p> We will not tolerate any harassment or discrimination in violation of this policy. If an
+                            investigation reveals that a violation of this policy or other inappropriate conduct has occurred,
+                            then LFC will take corrective action, including discipline, up to and including termination of
+                            volunteer or employee, as is appropriate under the circumstances, regardless of the job positions
+                            of the parties involved. If the person who engaged in conduct in violation of this policy is not an
+                            LFC volunteer or employee, then we will take whatever corrective action is reasonable and
+                            appropriate under the circumstances.                        
+                        </p>
+                    </div>
+                    <div>
+                        <h3>RETALIATION PROHIBITED</h3>
+                        <p> Retaliatory treatment of any volunteer or employee for reporting discrimination, harassment or
+                            other prohibited behavior or for cooperating in a harassment investigation is strictly forbidden.
+                            All volunteers and employees who experience or witness any conduct they believe to be
+                            retaliatory should immediately report such conduct to a supervisor.                        
+                        </p>
+                    </div>
+                    <div>
+                        <strong> LFC strongly encourages every employee to report any incidents of harassment
+                            immediately (even if you are not the victim of the harassment) so that complaints can be
+                            resolved in a timely and appropriate manner Employees should also know that they have a
+                            right to file such complaints with the California Department of Fair Employment and
+                            Housing and the Federal Equal Employment Opportunity Commission, government
+                            agencies which investigate and adjudicate complaints of prohibited harassment in
+                            employment.                        
+                        </strong>
+                    </div>
+                    <div>
+                        <p> By signing below you are acknowledging that you have read the above policy and agree to abide by it at
+                            all times while at LFC and/or representing LFC.                                                
+                        </p>
+                    </div>
+                    <div class="volunteer-form">
+                        <div class="volunteer-form-subcontainer">
+                            <label for="form2_volunteer_name">* Name</label>
+                            <input type="text" name="form2_volunteer_name" id="form2_volunteer_name">
+                        </div>              
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="page">
+                <div class="page-contents">
+                    <div class="volunteer-form-subcontainer">
+                        <label for="form2_volunteer_date">* Date</label>
+                        <input type="date" name="form2_volunteer_date" id="form2_volunteer_date">
+                    </div>  
+                    <div class="volunteer-form-subcontainer">
+                        <label for="form2_volunteer_signature">* Signature</label>
+                        <input type="text" name="form2_volunteer_signature" id="form2_volunteer_signature"> 
+                    </div>                  
+                </div>
+            </div> 
+
+            <br>
+
+            <!-- Form 3 - Volunteer Commitment Form_ Hours  -->
+            <div class="page">
+                <div class="page-contents">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <p>Loaves, Fishes, Computers</p>
+                            <p>938 South Main Street</p>
+                            <p>Salinas, CA 93901</p>
+                        </div>
+                        <img src="/img/lfc_logo.png" alt="">
+                    </div>
+                    <div>
+                        <h2 style="text-align: left;">Volunteer Commitment Form: Hours</h2>
+                    </div>
+                    <div>
+                        <p>By choosing Loaves, Fishes & Computers (LFC) as your site for
+                            volunteering it is important to understand how much your time means to
+                            us. LFC is a volunteer-based organization and therefore you are very valuable to our success! Whether or not
+                            you think you’ll be a long- or short-term volunteer we want to know what your goal number of hours is. This
+                            refers to how many hours you’d like to volunteer at LFC total, and by providing this number you will not be
+                            subjected to serve that many hours. This data will be used for retention rate data and to find out if you have
+                            reached your goal! Thank you for participating.                        
+                        </p>
+                    </div>
+                    <div class="volunteer-form">
+                        <div class="volunteer-form-subcontainer">
+                            <label for="form3_volunteer_name">* Name</label>
+                            <input type="text" name="form3_volunteer_name" id="form3_volunteer_name">
+                        </div>
+                        <div class="volunteer-form-subcontainer">
+                            <label for="form3_volunteer_date">* Date</label>
+                            <input type="date" name="form3_volunteer_date" id="form3_volunteer_date">
+                        </div>
+                        <div class="volunteer-form-subcontainer">   
+                            <label for="form3_volunteer_goal">* Goal number of hours (total) you’d like to serve:</label>
+                            <input type="number" name="form3_volunteer_goal" id="form3_volunteer_goal">
+                        </div>
+                        <div class="volunteer-form-subcontainer">
+                            <label for="form3_volunteer_signature">* Signature</label>
+                            <input type="text" name="form3_volunteer_signature" id="form3_volunteer_signature"> 
+                        </div>                  
+                    </div>
+                    <div>
+                        <p>Loaves, Fishes & Computers is a nonprofit organization dedicated to helping local individuals and families
+                            overcome the digital and economic divides. LFC provides low-to-no-cost computer systems, digital literacy
+                            classes, hands-on technology workshops, and technical assistance/computer repair for people who qualify as
+                            low-income including individuals, families, seniors, veterans, children, people with disabilities and nonprofit
+                            organizations. We also provide volunteers an encouraging and gratifying place to learn about Computer Science
+                            and Information Technology.                        
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <!-- Form 4 - Volunteer Waiver and Liability Form  -->
+            <div class="page green-page">
+                <div class="page-contents green-page-contents">
+                    <div>
+                        <div>
+                            <h2>Your Copy: Loaves, Fishes & Computers, Inc.<br>Waiver and Release of Liability</h2>
+                        </div>
+                    </div>
+                    <div class="green-form-contents">
+                        <div>
+                            <p>Waiver and Release of Liability: In connection with my voluntary involvement in activities
+                                undertaken for, and/or with the participation and support of Loaves, Fishes & Computers, Inc.,
+                                I, the undersigned, hereby agree, for myself, my heirs, executors, administrators or assigns, to
+                                release and discharge Loaves, Fishes & Computers, Inc., its officers and directors, members,
+                                partners, funders, employees, agents, and volunteers (Releasees) from all claims, demands,
+                                and actions from injuries sustained to my person and/or property as a result of my involvement
+                                in such activities, whether or not resulting from negligence.                 
+                            </p>
+                        </div>
+                        <div>
+                            <p>I agree to release and hold Loaves, Fishes & Computers, Inc. and its Releasees harmless
+                                from any cause or action, claims or suit arising there from. I hereby attest that my attendance
+                                and involvement in such activities is voluntary, that I am participating at my own risk and that I
+                                have read the foregoing terms and conditions of this release. I understand that I will receive no
+                                payment for my services at Loaves, Fishes & Computers, Inc. I agree that I will perform
+                                activities that I am comfortable performing and will follow all instructions. I also grant full
+                                permission to Loaves, Fishes & Computers, Inc. and their Releasees, to forever use
+                                photographs, videos, audios or quotations from me in legitimate accounts and promotion of
+                                Loaves, Fishes & Computers, Inc. activities, without identification of me by name (or with
+                                name, at your discretion),and without compensation.
+                                                
+                            </p>
+                        </div>
+                        <div>
+                            <p>I have read the above release and state that I have understood it and that I am voluntarily
+                                signing it without any inducement or representation from any member of the staff. I understand
+                                that I will not be held liable for any action, wrongdoing, or unintended damage to property of
+                                Loaves, Fishes & Computers, Inc. I further understand that I am free to stop all volunteering at
+                                my discretion and that I can be dismissed of my volunteering opportunity at any time for any
+                                reason or for no reason whatsoever.
+                                            
+                            </p>
+                        </div>
+                        <div>
+                            <p>I have read all the above and agree to abide by the policies of Loaves, Fishes & Computers              
+                            </p>
+                        </div>
+                        <div class="volunteer-form-subcontainer">
+                            <label for="form4_volunteer_initials">* Initials</label>
+                            <input type="text" name="form4_volunteer_initials" id="form4_volunteer_initials">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="page green-page">
+                <div class="page-contents green-page-contents">
+                    <div>
+                        <div>
+                            <h2>LFC Copy: Loaves, Fishes & Computers, Inc.<br>Waiver and Release of Liability</h2>
+                        </div>
+                    </div>
+                    <div class="green-form-contents">
+                        <div>
+                            <p>Waiver and Release of Liability: In connection with my voluntary involvement in activities
+                                undertaken for, and / or with the participation and support of Loaves, Fishes & Computers,
+                                Inc., I, the undersigned, hereby agree, for myself, my heirs, executors, administrators or
+                                assigns, to release and discharge Loaves, Fishes & Computers, Inc., its officers and directors,
+                                members, partners, funders, employees, agents, and volunteers (Releasees) from all claims,
+                                demands, and actions from injuries sustained to my person and/or property as a result of my
+                                involvement in such activities, whether or not resulting from negligence.                
+                            </p>
+                        </div>
+                        <div>
+                            <p>I agree to release and hold Loaves, Fishes & Computers, Inc. and its Releasees harmless
+                                from any cause or action, claims or suit arising there from. I hereby attest that my attendance
+                                and involvement in such activities is voluntary, that I am participating at my own risk and that I
+                                have read the foregoing terms and conditions of this release. I understand that I will receive no
+                                payment for my services at Loaves, Fishes & Computers, Inc. I agree that I will perform
+                                activities that I am comfortable performing and will follow all instructions. I also grant full
+                                permission to Loaves, Fishes & Computers, Inc. and their Releasees, to forever use
+                                photographs, videos, audios or quotations from me in legitimate accounts and promotion of
+                                Loaves, Fishes & Computers, Inc. activities, without identification of me by name (or with
+                                name, at your discretion),and without compensation.                  
+                            </p>
+                        </div>
+                        <div>
+                            <p>I have read the above release and state that I have understood it and that I am voluntarily
+                                signing it without any inducement or representation from any member of the staff. I understand
+                                that I will not be held liable for any action, wrongdoing, or unintended damage to property of
+                                Loaves, Fishes & Computers, Inc. I further understand that I am free to stop all volunteering at
+                                my discretion and that I can be dismissed of my volunteering opportunity at any time for any
+                                reason or for no reason whatsoever.                                              
+                            </p>
+                        </div>
+                        <div class="volunteer-form">
+                            <div class="volunteer-form-subcontainer">
+                                <label for="form4_volunteer_name">* Name</label>
+                                <input type="text" name="form4_volunteer_name" id="form4_volunteer_name">
+                            </div>
+                            <div class="volunteer-form-subcontainer">
+                                <label for="form4_volunteer_date">* Date</label>
+                                <input type="date" name="form4_volunteer_date" id="form4_volunteer_date">
+                            </div>                 
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="page">
+                <div class="page-contents">
+                    <div class="volunteer-form">
+                        <div class="volunteer-form-subcontainer">
+                            <label for="form4_volunteer_signature">* Signature</label>
+                            <input type="text" name="form4_volunteer_signature" id="form4_volunteer_signature"> 
+                        </div>                  
+                    </div>
+                    
+                    <div>
+                        <p id="volunteer-border"></p>
+                        <p>Parent/ Guardians of Minors</p>
+                        <p>I, <input type="text" name="form4_parent_name" id="form4_parent_name" placeholder="Parent name" disabled> am the parent or guardian of a minor volunteer, under eighteen(18) of age. I
+                            consent to my child volunteering at Loaves, Fishes & Computers, Inc. and agree to the terms and
+                            conditions as stated above.
+                        </p> 
+                    </div>
+                    <div class="volunteer-form">
+                        <div class="volunteer-form-subcontainer">
+                            <label for="form4_child_name">Child Name</label>
+                            <input type="text" name="form4_child_name" id="form4_child_name" disabled>
+                        </div>
+                        <div class="volunteer-form-subcontainer">
+                            <label for="form4_parent_date">Date</label>
+                            <input type="date" name="form4_parent_date" id="form4_parent_date" disabled>
+                        </div>                 
+                        <div class="volunteer-form-subcontainer">
+                            <label for="form4_parent_signature">Signature</label>
+                            <input type="text" name="form4_parent_signature" id="form4_parent_signature" disabled>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <!-- Form 5 - Copy of Copy of Photo Multimedia Release and Waiver Form (English&Span)  -->
+
+            <div class="page">
+                <div class="page-contents">                
+                    <div>
+                        <h2>Multimedia Release and Waiver Form</h2>
+                    </div>
+                    <div class="volunteer-form">
+                        <p>I grant permission to Loaves, Fishes & Computers Inc., It’s employees and agents, to take and
+                            use visual images of me. Visual images are any type of recording including but not limited to
+                            photographs, digital images, drawings, renderings, voices, sounds, video recordings, audio clips,
+                            or written descriptions of recordings. I agree that LFC owns the images and all rights related to
+                            them. The images may be used in any manner or media without notifying me, such as
+                            company-sponsored websites, publications, promotions, broadcast, advertisements, posters,
+                            and theater slides, as well as non-university publications or broadcast, electronic or otherwise. I
+                            waive any right to inspect or approve the finished images or any printed or electronic matter
+                            that may be used with them.
+                        </p>
+                    </div>
+                    <div style="display:flex; align-items:center;width: 150px;">
+                        <input type="radio" name="form5_volunteer_yes_no" id="yes" value="yes" style="box-shadow: none;">
+                        <label for="yes">Yes</label>
+                        <input type="radio" name="form5_volunteer_yes_no" id="no" value="no" style="box-shadow: none;">
+                        <label for="no">No</label>
+                    </div>
+                    <div>
+                        <p>I release LFC and its employees and agents including any firm authorized to publish and/or
+                            distribute a finished product containing the images, from any claims, damages or liability arising
+                            from the use of the images.
+                        </p>
+                    </div>
+                    <div>
+                        <p>I am 18 years of age or older and competent to sign this release. I have read this release before
+                            signing, I understand it’s contents, meaning, and impact and freely accept the terms.
+                        </p>
+                    </div>
+                    <div class="volunteer-form">
+                        <div class="volunteer-form-subcontainer">
+                            <label for="form5_volunteer_name">* Name</label>
+                            <input type="text" name="form5_volunteer_name" id="form5_volunteer_name">
+                        </div>
+                        <div class="volunteer-form-subcontainer">
+                            <label for="form5_volunteer_address">* Address</label>
+                            <input type="text" name="form5_volunteer_address" id="form5_volunteer_address">
+                        </div>
+                        <div class="volunteer-form-subcontainer">
+                            <label for="form5_volunteer_phone">* Phone or email</label>
+                            <input type="text" name="form5_volunteer_phone" id="form5_volunteer_phone">
+                        </div>
+                        <div class="volunteer-form-subcontainer">
+                            <label for="form5_volunteer_date">* Date</label>
+                            <input type="date" name="form5_volunteer_date" id="form5_volunteer_date">
+                        </div>
+                        <div class="volunteer-form-subcontainer">
+                            <label for="form5_volunteer_signature">* Signature</label>
+                            <input type="text" name="form5_volunteer_signature" id="form5_volunteer_signature"> 
+                        </div>                  
+                    </div>
+                    <div>
+                        <p id="volunteer-border-black"></p>
+                    </div>
+                    <div class="volunteer-form">
+                        <div class="volunteer-form-subcontainer">
+                            <label for="form5_parent_signature">Parent or Guardian signature if under 18 years of age</label>
+                            <input type="text" name="form5_parent_signature" id="form5_parent_signature" disabled>
+                        </div>                                
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="page">
+                <div class="page-contents">                
+                    <div class="volunteer-form">
+                        <div class="volunteer-form-subcontainer">
+                            <label for="form5_staff_notes">Staff or Photographer Notes:</label>
+                            <textarea name="form5_staff_notes" id="form5_staff_notes"></textarea>
+                        </div>                                 
+                    </div>
+                    <div>
+                        <button type="submit">SUBMIT FORMS</button>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+        </form>
+    </div>
+</div>
+
+
+<script src="/js/script.js"></script>
+<script>
+    document.body.style.backgroundColor = "#e6e6e6";
+</script>
+
+<%- include("partials/footer.ejs") %>

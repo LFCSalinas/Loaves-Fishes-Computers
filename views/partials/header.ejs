@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> <%= title %> </title>
+  <meta property="og:site_name" content="LFC - The non-profit computer store" />
+  <meta property="og:title" content="LFC - The non-profit computer store" />
+  <meta name="description"
+    content="Helping our community succeed by providing low-cost computers, computer literacy classes, and volunteer opportunities. Ayuda al éxito de nuestra comunidad proviendo computadoras a un costo bajo, clases de computación y oportunidades de voluntariado." />
+  <meta name="keywords"
+    content="computer,cheap computer,used computer,learn computers,computer class,donate,recycle computer,charity,volunteer,Monterey,Computadora, computadora barata, computadora usada, computadoras para aprendizaje, computadoras para class, computadoras re-armadas, ca" />
+  <link rel="shortcut icon" href="/img/lfc_icon.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="https://www.google.com/recaptcha/api.js"></script>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header id="header">
+    <nav class="nav-container">
+      <div class="navbar-container">
+        <a href="/" class="nav-branding">LFC</a>
+        <nav class="navbar">
+          <!-- NAVIGATION -->
+          <ul class="nav-menu">
+            <li>
+              <div class="dropdown" data-dropdown>
+                <button class="link" data-dropdown-button>About</button>
+                <div class="dropdown-menu-left">
+                  <a href="/staff">Staff</a>
+                  <a href="/mission">Mission</a>
+                </div>
+              </div>
+            </li>
+            <li>
+              <a href="/recruitment">Recruitment</a>
+            </li>
+          </ul>
+          <ul class="nav-menu">
+            <li>
+              <a href="https://lfc.harnessapp.com/wv2/donate?checkout=2370" target="_blank">Donate</a>
+            </li>
+            <li>
+              <a href="/contact">Contact</a>
+            </li>
+            <% if (typeof user != "undefined" && user && user.admin === "Yes") { %>
+              <li>
+                <div class="dropdown" data-dropdown>
+                  <button class="link" data-dropdown-button>Hi, <%= user.first_name %></button>
+                  <div class="dropdown-menu-right">
+                    <a href="/admin">Admin</a>
+                    <a href="/dashboard">Dashboard</a>
+                    <a href="/profile">Profile</a>
+                    <a href="/volunteer-age">Forms</a>
+                    <a href="/auth/logout">Logout</a>
+                  </div>
+                </div>
+              </li>
+            <% } else if (typeof user != "undefined" && user && user.admin === "No") { %>
+              <li>
+                <div class="dropdown" data-dropdown>
+                  <button class="link" data-dropdown-button>Hi, <%= user.first_name %></button>
+                  <div class="dropdown-menu-right">
+                    <a href="/dashboard">Dashboard</a>
+                    <a href="/profile">Profile</a>
+                    <a href="/volunteer-age">Forms</a>
+                    <a href="/auth/logout">Logout</a>
+                  </div>
+                </div>
+              </li>
+            <% } else { %>
+              <li>
+                <div class="dropdown" data-dropdown>
+                  <i class="fas fa-user-circle"></i>
+                  <button class="link" data-dropdown-button>Sign In</button>
+                  <div class="dropdown-menu-right">
+                    <a href="/register">Register</a>
+                    <a href="/login">Login</a>
+                  </div>
+                </div>
+              </li>
+            <% } %>
+          </ul>
+          <!-- RESPONSIVE NAVIGATION -->
+          <ul class="nav-menu-responsive">
+            <li class="nav-item">
+              <a href="/" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="/staff" class="nav-link">Staff</a>
+            </li>
+            <li class="nav-item">
+              <a href="/mission" class="nav-link">Mission</a>
+            </li>
+            <li class="nav-item">
+              <a href="/recruitment" class="nav-link">Recruitment</a>
+            </li>
+            <li class="nav-item">
+              <a href="https://lfc.harnessapp.com/wv2/donate?checkout=2370" target="_blank" class="nav-link">Donate</a>
+            </li>
+            <li class="nav-item">
+              <a href="/contact" class="nav-link">Contact</a>
+            </li>
+            <% if (typeof user != "undefined" && user && user.admin === "Yes") { %>
+              <li class="nav-item">
+                <a href="/admin" class="nav-link">Admin</a>
+              </li>
+              <li class="nav-item">
+                <a href="/dashboard" class="nav-link">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a href="/profile" class="nav-link">Profile</a>
+              </li>
+              <li class="nav-item">
+                <a href="/volunteer-age" class="nav-link">Forms</a>
+              </li>
+              <li class="nav-item">
+                <a href="/auth/logout" class="nav-link">Logout</a>
+              </li>
+            <% } else if((typeof user != "undefined" && user && user.admin === "No")) { %>
+              <li class="nav-item">
+                <a href="/dashboard" class="nav-link">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a href="/profile" class="nav-link">Profile</a>
+              </li>
+              <li class="nav-item">
+                <a href="/volunteer-age" class="nav-link">Forms</a>
+              </li>
+              <li class="nav-item">
+                <a href="/auth/logout" class="nav-link">Logout</a>
+              </li>             
+            <% } else { %>
+              <li class="nav-item">
+                <a href="/register" class="nav-link">Register</a>
+              </li>
+              <li class="nav-item">
+                <a href="/login" class="nav-link">Login</a>
+              </li>
+            <% } %>
+          </ul>
+          <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+        </nav>
+      </div>
+    </nav>
+  </header>
+
+  <section id="donate">
+    <div class="container">
+      <div class="donate-subcontainer">
+          <a href="https://lfc.harnessapp.com/wv2/donate?checkout=2370" target="_blank"><i class="fas fa-donate"></i> DONATE</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="cookies">
+    <div class="container">
+      <div class="cookies-subcontainer">
+        <div class="cookies">
+          <strong>This website uses cookies to ensure you get the best experience on our website.</strong>
+          <button id="cookies-btn">That's fine!</button>
+        </div>
+      </div>
+    </div>
+  </section>
+

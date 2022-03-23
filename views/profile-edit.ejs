@@ -1,0 +1,322 @@
+<%- include("partials/header.ejs") %>
+
+<% if (typeof success != "undefined" && success) { %>
+  <div class="alert-message-container">
+    <div class="alert-message-padding">
+      <div class="alert-message-success">
+        <p> <%= message %> ( <a href="/profile" id="profile-update-link">view updated profile</a> )</p>
+      </div>
+    </div>
+  </div>
+<% } %>
+
+<% if (typeof success != "undefined" && !success) { %>
+  <div class="alert-message-container">
+    <div class="alert-message-padding">
+      <div class="alert-message-error">
+        <p> <%= message %> </p>
+      </div>
+    </div>
+  </div>
+<% } %>
+
+<section>
+  <div class="profile-container">
+
+      <form action="/auth/profile-edit" method="POST" class="profile-contents" enctype="multipart/form-data">
+
+        <!-- PROFILE IMAGE -->
+
+        <div class="profile-img-container">
+          <div class="profile-img-fixed-container">
+            <label for="image"><i class="fas fa-camera"></i> <p>Choose File</p> <p>Image Size Limit 1 MB</p></label>
+            <input type="file" id="image" name="image" onchange="GetFileSize()" accept="image/jpeg, image/png, image/jpg">
+          </div>
+        </div>
+        
+        <div class="profile-info">
+  
+          <div class="profile-info-container" >
+  
+            <!-- MOTIVATIONAL STATEMENT -->
+
+            <div class="profile-info-contents">
+              <div class="profile-topbox">
+                <h2>Motivational Statement</h2>
+              </div>
+              <div class="profile-boxes">
+                <div class="profile-box">
+                  <div class="profile-details">
+                    <label for="motivational_statement">Statement</label>
+                  </div>
+                  <textarea name="motivational_statement" id="motivational_statement" maxlength="500" placeholder="Max length 500 characters" style="resize:none"><%= user.motivational_statement %></textarea>
+                </div>
+              </div>
+            </div>
+
+            <!-- IDENTITY -->
+  
+            <div class="profile-info-contents">
+              <div class="profile-topbox">
+                <h2>Identity</h2>
+              </div>
+              <div class="profile-box">
+                <div class="profile-details">
+                  <label for="first_name">First name</label>
+                </div>
+                <input type="text" id="first_name" name="first_name" maxlength="25" value="<%= user.first_name %>">
+              </div>
+              <div class="profile-box">
+                <div class="profile-details">
+                  <label for="last_name">Last name</label>
+                </div>  
+                <input type="text" id="last_name" name="last_name" maxlength="25" value="<%= user.last_name %>">
+              </div>
+              <div class="profile-box">
+                <div class="profile-details">
+                  <label for="gender">Gender</label>
+                </div>
+                <div>
+                  <% if (user.gender === "M") { %>
+                    <input type="radio" id="male" name="gender" value="M" checked="checked">
+                    <label for="male">Male</label>
+                    <input type="radio" id="female" name="gender" value="F">
+                    <label for="female">Female</label>
+                  <% } else if (user.gender === "F") { %>
+                    <input type="radio" id="male" name="gender" value="M">
+                    <label for="male">Male</label>
+                    <input type="radio" id="female" name="gender" value="F" checked="checked">
+                    <label for="female">Female</label>
+                  <% } else { %>
+                    <input type="radio" id="male" name="gender" value="M">
+                    <label for="male">Male</label>
+                    <input type="radio" id="female" name="gender" value="F">
+                    <label for="female">Female</label>
+                  <% } %>
+                </div>
+              </div>
+              <div class="profile-box">
+                <div class="profile-details">
+                  <label for="birthday">Birthday</label>
+                </div>
+                <input type="date" placeholder="" name="birthday" maxlength="10" value="<%= user.birthday %>">
+              </div>
+              <div class="profile-box">
+                <div class="profile-details">
+                  <label for="place_of_birth">Place of birth</label>
+                </div>
+                <input type="text" id="place_of_birth" name="place_of_birth" maxlength="50" placeholder="e.g. Los Angeles, CA" value="<%= user.place_of_birth %>">
+              </div>
+            </div>
+
+            <!-- ADDRESS -->
+  
+            <div class="profile-info-contents">
+              <div class="profile-topbox">
+                <h1>Address</h1>
+              </div>
+              <div class="profile-boxes">
+                <div class="profile-box">
+                  <div class="profile-details">
+                    <label for="street">Street</label>
+                  </div>
+                  <input type="text" id="street" name="street" maxlength="30" value="<%= user.street %>">
+                </div>
+                <div class="profile-box">
+                  <div class="profile-details">
+                    <label for="city">City</label>
+                  </div>  
+                  <input type="text" id="city" name="city" maxlength="30" value="<%= user.city %>">
+                </div>
+                <div class="profile-box">
+                  <div class="profile-details">
+                    <label for="state">State</label>
+                  </div>
+                  <select name="state" id="state" >
+                    <option value="<%= user.state %>"> Select One </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- CONTACT -->
+  
+            <div class="profile-info-contents">
+              <div class="profile-topbox">
+                <h1>Contact</h1>
+              </div>
+              <div class="profile-boxes">
+                <div class="profile-box">
+                  <div class="profile-details">
+                    <label for="phone">Phone</label>
+                  </div>
+                  <input type="tel" id="phone" name="phone" maxlength="12" placeholder="e.g. 831-555-5555" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value="<%= user.phone %>">
+                </div>
+                <div class="profile-box">
+                  <div class="profile-details">
+                    <label for="email">Email</label>
+                  </div>  
+                  <input type="email" value="<%= user.email %>" disabled>
+                </div>
+                <div class="profile-box">
+                  <div class="profile-details">
+                    <label for="other-email">Other email</label>
+                  </div>
+                  <input type="email" id="other_email" maxlength="50" name="other_email" value="<%= user.other_email %>">
+                </div>
+              </div>
+            </div>
+  
+            <!-- EMERGENCY -->
+
+            <div class="profile-info-contents">
+              <div class="profile-topbox">
+                <h1>Emergency</h1>
+              </div>
+              <div class="profile-boxes">
+                <div class="profile-box">
+                  <div class="profile-details">
+                    <label for="emergency_first_name">First name</label>
+                  </div>
+                  <input type="text" id="emergency_first_name" maxlength="20" name="emergency_first_name" value="<%= user.emergency_first_name %>">
+                </div>
+                <div class="profile-box">
+                  <div class="profile-details">
+                    <label for="emergency_last_name">Last name</label>
+                  </div>  
+                  <input type="text" id="emergency_last_name" maxlength="20" name="emergency_last_name" value="<%= user.emergency_last_name %>">
+                </div>
+                <div class="profile-box">
+                  <div class="profile-details">
+                    <label for="emergency_relationship">Relation</label>
+                  </div>  
+                  <input type="text" id="emergency_relation" maxlength="20" name="emergency_relation" value="<%= user.emergency_relation %>">
+                </div>
+                <div class="profile-box">
+                  <div class="profile-details">
+                    <label for="emergency_phone">Phone</label>
+                  </div>
+                  <input type="tel" id="emergency_phone" name="emergency_phone" maxlength="12" placeholder="e.g. 831-555-5555" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value="<%= user.emergency_phone %>">
+                </div>
+              </div>
+            </div>
+  
+            <!-- EXPERIENCE -->
+
+            <div class="profile-info-contents">
+              <div class="profile-topbox">
+                <h2>Experience</h2>
+              </div>
+              <div class="profile-boxes">
+  
+                <div class="profile-box">
+                    <p>Last two most recent jobs</p>
+                </div>
+  
+                <div class="profile-box">
+                  <div class="profile-details">
+                    <p>Company</p>
+                  </div>
+                  <input type="text" id="job1_company" maxlength="40" name="job1_company" value="<%= user.job1_company %>">
+                </div>
+                <div class="profile-box">
+                  <div class="profile-details">
+                    <p>Job title</p>
+                  </div>
+                  <input type="text" id="job1_title" maxlength="30" name="job1_title" value="<%= user.job1_title %>">
+                </div>
+                <div class="profile-box">
+                  <div class="profile-details">
+                    <p>Years</p>
+                  </div>
+                  <select name="job1_years" id="job1_years">
+                    <option value="<%= user.job1_years %>">Select One</option>
+                    <option value="0-2 years">0 - 2 years</option>
+                    <option value="3-5 years">3 - 5 years</option>
+                    <option value="5+ years">More than 5 years</option>
+                  </select>
+                </div>
+                <div class="profile-box">
+                  <div class="profile-details">
+                    <p>Duties</p>
+                  </div>
+                  <textarea name="job1_duties" id="job1_duties" maxlength="500" style="resize:none"> <%= user.job1_duties %> </textarea>
+                </div>
+  
+                <div class="profile-box">
+                  <div class="profile-details">
+                    <p>Company</p>
+                  </div>
+                  <input type="text" id="job2_company" name="job2_company" maxlength="40" value="<%= user.job2_company %>">
+                </div>
+                <div class="profile-box">
+                  <div class="profile-details">
+                    <p>Job title</p>
+                  </div>
+                  <input type="text" id="job2_title" name="job2_title" maxlength="30" value="<%= user.job2_title %>">
+                </div>
+                <div class="profile-box">
+                  <div class="profile-details">
+                    <p>Years</p>
+                  </div>
+                  <select name="job2_years" id="job2_years">
+                    <option value="<%= user.job2_years %>">Select One</option>
+                    <option value="0-2 years">0 - 2 years</option>
+                    <option value="3-5 years">3 - 5 years</option>
+                    <option value="5+ years">More than 5 years</option>
+                  </select>
+                </div>
+                <div class="profile-box">
+                  <div class="profile-details">
+                    <p>Duties</p>
+                  </div>
+                  <textarea name="job2_duties" id="job2_duties" maxlength="500" style="resize:none"><%= user.job2_duties %></textarea>
+                </div>
+              </div>
+            </div>
+
+            <!-- SKILLS -->
+
+            <div class="profile-info-contents">
+              <div class="profile-topbox">
+                <h2>Skills</h2>
+              </div>
+              <div class="profile-boxes">
+                <div class="profile-box">
+                  <div class="profile-details">
+                    <label for="skills">Skills</label>
+                  </div>
+                  <textarea name="skills" id="skills" maxlength="1000" style="resize:none"><%= user.skills %></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div class="profile-info-contents">
+              <div class="profile-topbox">
+                <h2>Languages</h2>
+              </div>
+              <div class="profile-boxes">
+                <div class="profile-box">
+                  <div class="profile-details">
+                    <label for="languages">Languages</label>
+                  </div>
+                  <input type="text" name="languages" id="languages" maxlength="100" value="<%= user.languages %>"></input>
+                </div>
+              </div>
+            </div>
+  
+            <div class="profile-info-contents">
+              <div class="profile-topbox">
+                <button id="save-edit-profile-btn">SAVE UPDATES</button>
+                <a href="/profile" id="cancel-edit-profile-btn">CANCEL</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+  </div>
+</section>
+
+<script src="/js/script.js"></script>
+
+<%- include("partials/footer.ejs") %>

@@ -1,0 +1,85 @@
+<%- include("partials/header.ejs") %>
+
+<!-- MODAL -->
+<div id="modal-overlay">
+    <div id="modal-delete-account">
+        <form action="/auth/delete-account" method="POST" id="delete-account-form">
+            <div class="exclamation">
+                <i class="fas fa-exclamation-circle"></i>
+                <i class="fas fa-times" id="close-modal-btn"></i>
+            </div>
+            <h3>Please enter your password</h3>
+            <div class="password-container">
+                <input type="password" id="password" name="password" placeholder="Password" maxlength="60" required>
+                <p id="password-strength-text"></p>
+            </div>
+            <div class="register-btn-container">
+                <button type="submit">DELETE</button>
+            </div>
+            <% if(typeof success !="undefined" && success) { %>
+                <div class="alert-message-success">
+                    <%= message %>
+                </div>
+            <% } else if(typeof success !="undefined" && !success) { %>
+                <div class="alert-message-error">
+                    <%= message %>
+                </div>
+            <% } %>
+        </form>
+    </div>
+</div>
+
+<section>
+    <div class="container" style="padding: 20px 0;">
+        <div class="subcontainer" style="text-align: left;">
+            <div class="dashboard">
+                <h1>Dashboard</h1>
+            </div>
+            <div class="dashboard-wrapper">
+                <% if (typeof user.forms != "undefined" && user.forms) {%>
+                    <div class="dashboard-box">
+                        <div>
+                            <strong><h3>Forms</h3></strong>
+                        </div>
+                        <div class="dashboard-inner-box">
+                            <!-- <li><a href="http://localhost:5000/user-forms/<%= user.id %>/<%= user.forms %>" target="_blank">My LFC Volunteer Forms</a></li> -->
+                            <li><a href="https://minu-loaves-fishes-computers.herokuapp.com/user-forms/<%= user.id %>/<%= user.forms %>" target="_blank">LFC Volunteer Forms</a></li>
+                        </div> 
+                    </div>
+                <% } else { %>
+                    <div class="dashboard-box">
+                        <div>
+                            <strong><h3>Forms</h3></strong>
+                        </div>
+                        <div class="dashboard-inner-box">
+                            <li>Nothing here yet</li>
+                        </div> 
+                    </div>
+                <% } %>
+                <div class="dashboard-box">
+                    <div>
+                        <strong><h3>Schedule</h3></strong>
+                    </div>
+                    <div class="dashboard-inner-box">
+                        <li>Nothing here yet</li>
+                    </div> 
+                </div>
+                <div class="dashboard-box">
+                    <div>
+                        <strong><h3>Requests</h3></strong>
+                    </div>
+                    <div class="dashboard-inner-box">
+                        <li>Nothing here yet</li>
+                    </div> 
+                </div>
+            </div>
+            <div class="dashboard">
+                <button id="delete-account-btn"><i class="fas fa-user-minus"></i> Delete Account</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="/js/script.js"></script>
+
+<%- include("partials/footer.ejs") %>
