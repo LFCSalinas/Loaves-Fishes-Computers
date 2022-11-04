@@ -9,7 +9,7 @@ CREATE TABLE `user` (
   `member_since` VARCHAR(10),
   `status` VARCHAR(8) DEFAULT 'Inactive', 
   `admin` VARCHAR(3) DEFAULT 'No',
-   `image` varchar(50) DEFAULT NULL,
+  `image` varchar(50) DEFAULT NULL,
   `forms` varchar(50) DEFAULT NULL,
   `motivational_statement` varchar(500) DEFAULT NULL,
   `gender` char(1) DEFAULT NULL,

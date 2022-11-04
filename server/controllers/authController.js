@@ -27,9 +27,7 @@ function get_date(){
   return yourDate.toISOString().split('T')[0]
 }
 
-
 // REGISTER -------------------------------------------------------
-
 
 exports.register = (req, res) => {
   const { first_name, last_name, email, password, password_confirm } = req.body;
@@ -82,9 +80,7 @@ exports.register = (req, res) => {
    });
 }
 
-
 // LOGIN -------------------------------------------------------
-
 
 exports.login = async (req, res) => {
   const {email, password} = req.body;
@@ -126,9 +122,7 @@ exports.login = async (req, res) => {
   });
 }
 
-
 // IS USER LOGGED IN? -------------------------------------------------------
-
 
 exports.isLoggedIn = async (req, res, next) => {
   if(req.cookies.jwt){
@@ -149,9 +143,7 @@ exports.isLoggedIn = async (req, res, next) => {
   }else{ next();}
 }
 
-
 // LOGOUT -------------------------------------------------------
-
 
 exports.logout = async (req, res) => {
   res.cookie("jwt", "logout", {
@@ -161,9 +153,7 @@ exports.logout = async (req, res) => {
   return res.status(200).redirect("/");
 }
 
-
 // UPDATE PASSWORD -------------------------------------------------------
-
 
 exports.updatePassword = (req, res) => {
   const { id, token, token_expires, password } = req.body;
@@ -199,9 +189,7 @@ exports.updatePassword = (req, res) => {
   }
 }
 
-
 // PASSWORD RESET -------------------------------------------------------
-
 
 exports.passwordReset = (req, res) => {
   var email = req.body.email;
@@ -248,9 +236,7 @@ exports.passwordReset = (req, res) => {
   });
 }
 
-
 // SUBMIT VOLUNTEER FORMS -------------------------------------------------------
-
 
 exports.submitForms = async (req, res) => {
  
@@ -307,9 +293,7 @@ exports.submitForms = async (req, res) => {
   });
 }
 
-
 // PROFILE EDIT -------------------------------------------------------
-
 
 exports.profileEdit = async (req, res, next) => {
   const { motivational_statement, first_name, last_name, gender, birthday, place_of_birth, street, city, state, phone, other_email, emergency_first_name, emergency_last_name, emergency_relation, emergency_phone, job1_company, job1_title, job1_years, job1_duties, job2_company, job2_title, job2_years, job2_duties, skills, languages } = req.body;
@@ -363,9 +347,7 @@ exports.profileEdit = async (req, res, next) => {
   }
 }
 
-
 // DELETE ACCOUNT ------------------------------------------------------------------
-
 
 exports.deleteAccount = (req, res) => {
   const password = req.body.password;
@@ -394,20 +376,15 @@ exports.deleteAccount = (req, res) => {
   });
 }
 
-
 // CONTACT US (CONTACT PAGE) -------------------------------------------------------
-
 
 exports.contactUsEmail = (req, res) => {
   const pattern = /^[a-zA-Z0-9\-_]+(\.[a-zA-Z0-9\-_]+)*@[a-z0-9]+(\-[a-z0-9]+)*(\.[a-z0-9]+(\-[a-z0-9]+)*)*\.[a-z]{2,4}$/;
   const {name, email, message} = req.body;
   console.log(email)
-  if(
-  name === "" || name === null || name === undefined ||
-  email === "" || email === null || email === undefined ||
-  message === "" || message === null || message === undefined){
+  if(!name || !email || !message) {
     return res.render("contact", {title: "Contact | Loaves Fishes Computers", user : req.user, success: false, message: "Input fields cannot be empty"});
-  } else if(!pattern.test(email)) {
+  } else if (!pattern.test(email)) {
     return res.render("contact", {title: "Contact | Loaves Fishes Computers", user : req.user, success: false, message: "Email is invalid"});
   }
   mail.contactUsEmail(name, email, message, (err, data) => {
@@ -416,41 +393,30 @@ exports.contactUsEmail = (req, res) => {
   }); 
 }
 
-
 // APPLY TO VOLUNTEER (HOME PAGE) -------------------------------------------------------
-
 
 exports.applyEmailHome = (req, res) => {
   const pattern = /^[a-zA-Z0-9\-_]+(\.[a-zA-Z0-9\-_]+)*@[a-z0-9]+(\-[a-z0-9]+)*(\.[a-z0-9]+(\-[a-z0-9]+)*)*\.[a-z]{2,4}$/;
   const { full_name, phone, email } = req.body;
-  if(
-  full_name === "" || full_name === null || full_name === undefined ||
-  phone === "" || phone === null || phone === undefined ||
-  email === "" || email === null || email === undefined){
+  if(!full_name || !phone || !email) {
     return res.render("index", {title: "Home | Loaves Fishes Computers", user : req.user, success: false, message: "Input fields cannot be empty"});
-  } else if(!pattern.test(email)) {
+  } else if (!pattern.test(email)) {
     return res.render("index", {title: "Home | Loaves Fishes Computers", user : req.user, success: false, message: "Email is invalid"});
   }
   mail.sendApplyEmail(full_name, phone, email, (err, data) => {
     if (!err) return res.render("index", {title: "Home | Loaves Fishes Computers", user : req.user, success: true, message: "Message has been sent"});
     else console.log(err);
   }); 
-
 };
 
-
 // APPLY TO VOLUNTEER (MISSION PAGE) -------------------------------------------------------
-
 
 exports.applyEmailMission = (req, res) => {
   const pattern = /^[a-zA-Z0-9\-_]+(\.[a-zA-Z0-9\-_]+)*@[a-z0-9]+(\-[a-z0-9]+)*(\.[a-z0-9]+(\-[a-z0-9]+)*)*\.[a-z]{2,4}$/;
   const { full_name, phone, email } = req.body;
-  if(
-  full_name === "" || full_name === null || full_name === undefined ||
-  phone === "" || phone === null || phone === undefined ||
-  email === "" || email === null || email === undefined){
+  if (!full_name || !phone || !email) {
     return res.render("mission", {title: "Mission | Loaves Fishes Computers", user : req.user, success: false, message: "Input fields cannot be empty"});
-  }else if(!pattern.test(email)) {
+  } else if (!pattern.test(email)) {
     return res.render("mission", {title: "Mission | Loaves Fishes Computers", user : req.user, success: false, message: "Email is invalid"});
   }
   mail.sendApplyEmail(full_name, phone, email, (err, data) => {
@@ -459,19 +425,14 @@ exports.applyEmailMission = (req, res) => {
   }); 
 };
 
-
 // APPLY TO VOLUNTEER (RECRUITMENT PAGE) -------------------------------------------------------
-
 
 exports.applyEmailRecruitment = (req, res) => {
   const pattern = /^[a-zA-Z0-9\-_]+(\.[a-zA-Z0-9\-_]+)*@[a-z0-9]+(\-[a-z0-9]+)*(\.[a-z0-9]+(\-[a-z0-9]+)*)*\.[a-z]{2,4}$/;
   const { full_name, phone, email } = req.body;
-  if(
-  full_name === "" || full_name === null || full_name === undefined ||
-  phone === "" || phone === null || phone === undefined ||
-  email === "" || email === null || email === undefined){
+  if (!full_name || !phone || !email) {
     return res.render("recruitment", {title: "Recruitment | Loaves Fishes Computers", user : req.user, success: false, message: "Input fields cannot be empty"});
-  }else if(!pattern.test(email)) {
+  } else if (!pattern.test(email)) {
     return res.render("recruitment", {title: "Home | Loaves Fishes Computers", user : req.user, success: false, message: "Email is invalid"});
   }
   mail.sendApplyEmail(full_name, phone, email, (err, data) => {
@@ -480,13 +441,11 @@ exports.applyEmailRecruitment = (req, res) => {
   }); 
 };
 
-
-
 // ADMIN CRUD SYSTEM ======================================================================================
 
 
-// FIND USER -------------------------------------------------------
 
+// FIND USER -------------------------------------------------------
 
 exports.findUser = (req, res) => {
   let searchTerm = req.body.search;
@@ -496,9 +455,7 @@ exports.findUser = (req, res) => {
   });
 }
 
-
 // ADD USER -------------------------------------------------------
-
 
 exports.addUser = (req, res) => {
   const { first_name, last_name, password, password_confirm, admin } = req.body;
@@ -506,7 +463,7 @@ exports.addUser = (req, res) => {
   const status = "Active";
   var email = req.body.email;
 
-  if(email === "@")
+  if (email === "@")
     email = undefined;
 
   // Use express validator to check for errors in user input
@@ -517,7 +474,7 @@ exports.addUser = (req, res) => {
   var allParsedErrors = JSON.parse(allErrors);
 
   // If there are validation errors: return them to the user.
-  if(!errors.isEmpty()){
+  if (!errors.isEmpty()) {
     return res.render("add-user", { 
       title:"Add User",
       user : req.user,
@@ -535,7 +492,7 @@ exports.addUser = (req, res) => {
     if (err) {
       console.log(err);
     // Email already exists
-    } else if (results != ""){
+    } else if (results != "") {
       return res.render("add-user", {title: "Add User",
                               user : req.user,
                               success: false,
@@ -557,9 +514,7 @@ exports.addUser = (req, res) => {
   })
 }
 
-
 // UPDATE USER -------------------------------------------------------
-
 
 exports.updateUser = (req, res) => {
   const { first_name, last_name, admin } = req.body;
