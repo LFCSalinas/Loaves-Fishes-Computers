@@ -1,4 +1,4 @@
-const mysql = require("mysql");
+const mysql = require("mysql2");
 const db = require("../../db.js");
 const jwt = require("jsonwebtoken");
 const {promisify} = require("util");
@@ -71,14 +71,14 @@ exports.register = (req, res) => {
               if (!err) {
                 mail.activateAccountEmail(email, results.insertId, token, (err, data) => {
                   if(!err) return res.render("account-verification", {title: "Account Verification | Loaves Fishes Computers"});
-                  else console.log(err.message);
+                  else console.log(err.message)
                 });
               // DATABASE ERROR
-              } else { console.log(err.message) }
+              } else console.log(err.message);
           })//function
         });//bcrypt
     // DATABASE ERROR
-    } else{ console.log(err.message); } 
+    } else console.log(err.message);
    });
 }
 
@@ -120,9 +120,7 @@ exports.login = async (req, res) => {
       res.cookie("jwt", token, cookieOptions);
       return res.status(200).redirect("/");
     // DATABASE ERROR
-    } else{
-      console.log(err.message)
-    }
+    } else console.log(err.message);
   });
 }
 

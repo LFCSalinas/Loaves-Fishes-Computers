@@ -7,7 +7,7 @@ const region = process.env.AWS_BUCKET_REGION
 const accessKeyId = process.env.AWS_ACCESS_KEY
 const secretAccessKey = process.env.AWS_SECRET_KEY
 
-// initialize a new instace of the s3 object using our credentials so we can access the bucket
+// initialize a new instance of the s3 object using our credentials, so we can access the bucket
 const s3 = new S3({
     region,
     accessKeyId,
