@@ -53,35 +53,35 @@ exports.register = (req, res) => {
     })
   }
 
-  // dbService.findUserByEmail(email, async (err, results) =>{
-  //   if (err){
-  //     return console.log(err.message)
-  //   }
-  //
-  //   if(results != ""){
-  //     return res.render("register", {title: "Register | Loaves Fishes Computers",
-  //       success: false,
-  //       message: "An account with that email already exists",
-  //       first_name : first_name,
-  //       last_name : last_name,
-  //       email: email,
-  //       password: password});
-  //   } else if (results[0] === undefined) {
-  //     let token = randomstring.generate(20);
-  //     bcrypt.hash(password, saltRounds, (err, hash) => {
-  //       db.query("INSERT INTO user (first_name, last_name, email, password, token, member_since) VALUES (?,?,?,?,?,?)", [first_name, last_name, email, hash, token, member_since],
-  //           async (err, results) => {
-  //             if (!err) {
-  //               mail.activateAccountEmail(email, results.insertId, token, (err, data) => {
-  //                 if(!err) return res.render("account-verification", {title: "Account Verification | Loaves Fishes Computers"});
-  //                 else console.log(err.message)
-  //               });
-  //               // DATABASE ERROR
-  //             } else console.log(err.message);
-  //           })//function
-  //     });//bcrypt
-  //   }
-  // })
+  dbService.findUserByEmail(email, async function(err, results){
+    if (err){
+      return console.log(err.message)
+    }
+
+    if(results != ""){
+      return res.render("register", {title: "Register | Loaves Fishes Computers",
+        success: false,
+        message: "An account with that email already exists",
+        first_name : first_name,
+        last_name : last_name,
+        email: email,
+        password: password});
+    } else if (results[0] === undefined) {
+      let token = randomstring.generate(20);
+      bcrypt.hash(password, saltRounds, (err, hash) => {
+        db.query("INSERT INTO user (first_name, last_name, email, password, token, member_since) VALUES (?,?,?,?,?,?)", [first_name, last_name, email, hash, token, member_since],
+            async (err, results) => {
+              if (!err) {
+                mail.activateAccountEmail(email, results.insertId, token, (err, data) => {
+                  if(!err) return res.render("account-verification", {title: "Account Verification | Loaves Fishes Computers"});
+                  else console.log(err.message)
+                });
+                // DATABASE ERROR
+              } else console.log(err.message);
+            })//function
+      });//bcrypt
+    }
+  })
 
   db.query("SELECT email FROM user WHERE email = ?", [email], async (err, results) => {
     // CHECK IF EMAIL ALREADY EXISTS IN DATABASE
