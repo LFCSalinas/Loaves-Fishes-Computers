@@ -1,5 +1,5 @@
 const express = require("express");
-const authController = require("../controllers/authController");
+const authController = require("../controllers/newController");
 const {check} = require("express-validator");
 const multer  = require('multer');
 const upload = multer({ 

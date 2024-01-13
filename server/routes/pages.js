@@ -1,7 +1,7 @@
 const express = require("express");
-const db = require("../../db.js");
-const authController = require("../controllers/authController")
-const s3 = require("../../s3.js");
+const db = require("../repository/db.js");
+const authController = require("../controllers/newController")
+const s3 = require("../../services/s3.js");
 const router = express.Router();
 
 
@@ -34,7 +34,7 @@ router.get("/", authController.isLoggedIn, (req, res) => {
     return res.render("unsupported", {title: "Home | Loaves Fishes Computers", user : req.user});
 });
 
-// USER MUST NOT BE LOGGED IN TOO USE THESE ROUTES
+// USER MUST NOT BE LOGGED IN TO USE THESE ROUTES
 
 router.get("/register", authController.isLoggedIn, (req, res) => {
   if(!req.user && !checkBrowser(req.headers))

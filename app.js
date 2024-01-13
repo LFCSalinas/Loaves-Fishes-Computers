@@ -27,5 +27,10 @@ const PORT = process.env.PORT || 3000;
 
 // RUN SERVER
 app.listen(PORT, () => {
-  console.log(`Server started on port ${PORT}`);
+  console.log(`Server started on port${PORT}`);
 });
+
+// Things modified by Ray:
+// I DON'T HAVE ACCESS TO YOUR .ENV PLEASE GET THIS TO ME ASAP (Using my own reverse-engineered from usages)
+// Updated mysql dependency to mysql2. Reason: better pwd support - old ver was breaking your functions
+// Generated new MailGun API KEY (Ray API Key) (Still using pre-existing sandbox domain)
