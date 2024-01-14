@@ -15,9 +15,9 @@
 
         <div class="profile-img-container">
           <div class="profile-img-fixed-container">
-            <% if (rows[0].image != null) { %>
-              <!-- <img src="http://localhost:5000/user-image/<%= rows[0].id %>/<%= rows[0].image %>" width="300" class="profile-img" alt="user-image"> -->
-              <img src="https://minu-loaves-fishes-computers.herokuapp.com/user-image/<%= rows[0].id %>/<%= rows[0].image %>" width="300" class="profile-img" alt="user-image">
+            <% if (row.image != null) { %>
+              <!-- <img src="http://localhost:5000/user-image/<%= row.id %>/<%= row.image %>" width="300" class="profile-img" alt="user-image"> -->
+              <img src="https://minu-loaves-fishes-computers.herokuapp.com/user-image/<%= row.id %>/<%= row.image %>" width="300" class="profile-img" alt="user-image">
               <% } else { %>
                 <i class="far fa-user"></i>
             <% } %>
@@ -41,16 +41,16 @@
             </tr>
             <tr>
               <td>
-                <%= rows[0].id %>
+                <%= row.id %>
               </td>
               <td>
-                <%= rows[0].member_since %>
+                <%= row.member_since %>
               </td>
               <td>
-                <%= rows[0].status %>
+                <%= row.status %>
               </td>
               <td>
-                <%= rows[0].admin %>
+                <%= row.admin %>
               </td>
             </tr>
           </table>
@@ -74,16 +74,16 @@
             </tr>
             <tr>
               <td>
-                <%= rows[0].first_name %>
+                <%= row.first_name %>
               </td>
               <td>
-                <%= rows[0].last_name %>
+                <%= row.last_name %>
               </td>
               <td>
-                <%= rows[0].birthday %>
+                <%= row.birthday %>
               </td>
               <td>
-                <%= rows[0].gender %>
+                <%= row.gender %>
               </td>
             </tr>
           </table>
@@ -106,16 +106,16 @@
             </tr>
             <tr>
               <td>
-                <%= rows[0].street %>
+                <%= row.street %>
               </td>
               <td>
-                <%= rows[0].city %>
+                <%= row.city %>
               </td>
               <td>
-                <%= rows[0].state %>
+                <%= row.state %>
               </td>
               <td>
-                <%= rows[0].place_of_birth %>
+                <%= row.place_of_birth %>
               </td>
             </tr>
           </table>
@@ -138,13 +138,13 @@
             </tr>
             <tr>
               <td>
-                <%= rows[0].email %>
+                <%= row.email %>
               </td>
               <td>
-                <%= rows[0].other_email %>
+                <%= row.other_email %>
               </td>
               <td>
-                <%= rows[0].phone %>
+                <%= row.phone %>
               </td>
             </tr>
           </table>
@@ -168,16 +168,16 @@
             </tr>
             <tr>
               <td>
-                <%= rows[0].emergency_first_name %>
+                <%= row.emergency_first_name %>
               </td>
               <td>
-                <%= rows[0].emergency_last_name %>
+                <%= row.emergency_last_name %>
               </td>
               <td>
-                <%= rows[0].emergency_relation %>
+                <%= row.emergency_relation %>
               </td>
               <td>
-                <%= rows[0].emergency_phone %>
+                <%= row.emergency_phone %>
               </td>
             </tr>
           </table>
@@ -200,13 +200,13 @@
             </tr>
             <tr>
               <td>
-                <%= rows[0].job1_company %>
+                <%= row.job1_company %>
               </td>
               <td>
-                <%= rows[0].job1_title %>
+                <%= row.job1_title %>
               </td>
               <td>
-                <%= rows[0].job1_years %>
+                <%= row.job1_years %>
               </td>
             </tr>
           </table>
@@ -218,7 +218,7 @@
           </tr>
           <tr>
             <td style="white-space: normal;">
-              <%= rows[0].job1_duties %>
+              <%= row.job1_duties %>
             </td>
           </tr>
         </table>
@@ -232,13 +232,13 @@
             </tr>
             <tr>
               <td>
-                <%= rows[0].job2_company %>
+                <%= row.job2_company %>
               </td>
               <td>
-                <%= rows[0].job2_title %>
+                <%= row.job2_title %>
               </td>
               <td>
-                <%= rows[0].job2_years %>
+                <%= row.job2_years %>
               </td>
             </tr>
           </table>
@@ -251,7 +251,7 @@
           </tr>
           <tr>
             <td style="white-space: normal;">
-              <%= rows[0].job2_duties %>
+              <%= row.job2_duties %>
             </td>
           </tr>
         </table>
@@ -269,7 +269,7 @@
           </tr>
           <tr>
             <td style="white-space: normal;">
-              <%= rows[0].skills %>
+              <%= row.skills %>
             </td>
           </tr>
         </table>
@@ -288,7 +288,7 @@
           </tr>
           <tr>
             <td style="white-space: normal;">
-              <%= rows[0].languages %>
+              <%= row.languages %>
             </td>
           </tr>
         </table>
@@ -306,7 +306,7 @@
           </tr>
           <tr>
             <td style="white-space: normal;">
-              <%= rows[0].motivational_statement %>
+              <%= row.motivational_statement %>
             </td>
           </tr>
         </table>
@@ -319,10 +319,10 @@
           <h2>VOLUNTEER FORMS</h2>
         </div>
 
-        <% if (rows[0].forms != null) { %>
+        <% if (row.forms != null) { %>
           <div style="width: 100%;text-align: left;">
-            <!-- <a href="http://localhost:5000/user-forms/<%= rows[0].id %>/<%= rows[0].forms %>" target="_blank">LFC Volunteer Forms</a> -->
-            <a href="https://minu-loaves-fishes-computers.herokuapp.com/user-forms/<%= rows[0].id %>/<%= rows[0].forms %>" target="_blank">LFC Volunteer Forms</a>
+            <!-- <a href="http://localhost:5000/user-forms/<%= row.id %>/<%= row.forms %>" target="_blank">LFC Volunteer Forms</a> -->
+            <a href="https://minu-loaves-fishes-computers.herokuapp.com/user-forms/<%= row.id %>/<%= row.forms %>" target="_blank">LFC Volunteer Forms</a>
           </div>
         <% } %>
 

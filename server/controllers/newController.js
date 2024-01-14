@@ -1,6 +1,4 @@
 const dbService = require("../../services/dbService.js")
-const adminDBService = require("../../services/adminDBService.js")
-const db = require("../repository/db.js");
 const jwt = require("jsonwebtoken");
 const {promisify} = require("util");
 const {validationResult} = require("express-validator");
@@ -438,7 +436,7 @@ exports.applyEmailRecruitment = (req, res) => {
 
 exports.findUser = async (req, res) => {
     try{
-        const results = await dbService.findUserBySearch(req.body.search);
+        const results = await dbService.findUsersBySearch(req.body.search);
         return res.render("admin", {title: "Admin | Loaves Fishes Computers", user: req.user, rows: results})
     } catch (err) {
         console.error(err);

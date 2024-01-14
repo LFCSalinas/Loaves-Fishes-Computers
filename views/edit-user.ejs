@@ -6,17 +6,17 @@
         <div class="flex-2">
           <a href="/admin">Admin</a> / <p>Edit User</p>
         </div>
-        <form action="/auth/update-user/<%= rows[0].id %>" id="edit-user-form" method="POST">
+        <form action="/auth/update-user/<%= row.id %>" id="edit-user-form" method="POST">
           <div class="first-name-container">
             <input type="text" id="first-name" name="first_name" maxlength="100" placeholder="First name"
-              value="<%= rows[0].first_name %>" required>
+              value="<%= row.first_name %>" required>
           </div>
           <div class="last-name-container">
             <input type="text" id="last-name" name="last_name" maxlength="100" placeholder="Last name"
-              value="<%= rows[0].last_name %>" required>
+              value="<%= row.last_name %>" required>
           </div>
           <div class="email-container">
-            <input type="email" id="email" name="email" maxlength="100" placeholder="Email" value="<%= rows[0].email %>"
+            <input type="email" id="email" name="email" maxlength="100" placeholder="Email" value="<%= row.email %>"
               required>
           </div>
           <div class="admin-user-radios">
@@ -25,7 +25,7 @@
                 admin?</label>
             </div>
             <div>
-              <% if(rows[0].admin==="Yes" ) { %>
+              <% if(row.admin==="Yes" ) { %>
                 <input type="radio" name="admin" value="Yes" checked required>
                 <label for="Yes">Yes</label>
                 <br>
