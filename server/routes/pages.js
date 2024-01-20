@@ -1,11 +1,9 @@
 const express = require("express");
-const db = require("../repository/db.js");
 const dbService = require("../../services/dbService.js")
 
 const authController = require("../controllers/newController")
 const s3 = require("../../services/s3.js");
 const router = express.Router();
-
 
 
 // FUNCTION TO CHECK FOR INTERNET EXPLORER ============================================
@@ -19,7 +17,7 @@ function browserInvalid(headers){
       break;
     }
   }
-  // IF INTERNET EXPLORER IS BEING USED RETURN FALSE OTHERWISE RETURN TRUE
+  // IF INTERNET EXPLORER IS BEING USED RETURN TRUE OTHERWISE RETURN FALSE
   return (b === "MSIE" || b === "Trident");
 }
 
