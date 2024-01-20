@@ -1,6 +1,5 @@
 // Database Service - Decoupled Database Queries
 const jawsdb = require("../server/repository/jawsdb.js");
-const db = require("../server/repository/db");
 require("dotenv").config();
 
 

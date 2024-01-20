@@ -1,4 +1,4 @@
-const dbService = require("../../services/dbService.js")
+const dbService = require("../../../services/dbService.js")
 
 // Test: findIdByEmail | return id of row with matching unique email
 test('findUserById', async () => {

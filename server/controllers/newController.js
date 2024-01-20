@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const {promisify} = require("util");
 const {validationResult} = require("express-validator");
 
-const mail = require("../../services/mail.js");
+const mailService = require("../../services/mailService.js");
 const s3 = require("../../services/s3.js");
 const pdfService = require("../../services/pdfService.js");
 const fs = require("fs").promises;
@@ -68,7 +68,7 @@ exports.register = async (req, res) => {
             // INSERT INTO user
             const insertResult = await dbService.addUser(first_name, last_name, email, hash, token, member_since);
             // Send MailGun
-            await mail.activateAccountEmail(email, insertResult, token);
+            await mailService.activateAccountEmail(email, insertResult, token);
             res.render("account-verification", {title: "Account Verification | Loaves Fishes Computers"});
         }
     } catch (err) {
@@ -217,7 +217,7 @@ exports.passwordReset = async (req, res) => {
         const data = {token: token, token_expires: token_expires};
 
         await dbService.setUserDataById(data, result.id);
-        mail.resetPasswordEmail(email, result.id, token);
+        await mailService.resetPasswordEmail(email, result.id, token);
 
     } catch (err) {
         console.log(err.message)
@@ -393,11 +393,11 @@ const emailHelper = async (page, req) => {
         return { title, user: req.user, success: false, message: "Email is invalid" };
     }
 
-    // Send email | Should be combined (in mail.js too)
+    // Send email | Should be combined (in mailService.js too)
     if (page === "contact") {
-        await mail.contactUsEmail(name, email, content);
+        await mailService.contactUsEmail(name, email, content);
     } else {
-        await mail.sendApplyEmail(name, content, email);
+        await mailService.sendApplyEmail(name, content, email);
     }
     return { title, user: req.user, success: true, message: "Message has been sent" };
 };

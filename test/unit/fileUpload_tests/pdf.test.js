@@ -1,4 +1,4 @@
-const pdfService = require("../../services/pdfService.js");
+const pdfService = require("../../../services/pdfService.js");
 const fs = require("fs");
 
 // Test: parse form-fillable pdf | return form
