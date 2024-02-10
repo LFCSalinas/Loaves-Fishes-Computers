@@ -19,8 +19,6 @@ test('findAllUsersNotDeleted', async () => {
     const rows = await dbService.findAllUsersNotDeleted();
 });
 
-
-
 // Test addUser
 test('addUser', async () => {
     const resultId = await dbService.addUser("test_f", "test_l", "test@test.test", "hashedPwd", "token?", new Date().toISOString().split('T')[0]);

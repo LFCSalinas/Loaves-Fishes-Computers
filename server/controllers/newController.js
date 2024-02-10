@@ -220,7 +220,7 @@ exports.passwordReset = async (req, res) => {
         await mailService.resetPasswordEmail(email, result.id, token);
 
     } catch (err) {
-        console.log(err.message)
+        console.error(err.message)
     }
 
     return res.render("password-reset-sent", {title: "Password Reset Sent | Loaves Fishes Computers"});

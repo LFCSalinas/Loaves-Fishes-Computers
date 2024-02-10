@@ -5,7 +5,6 @@ const lfcSender = process.env.MAIL_SENDER
 const lfcReceiver = process.env.MAIL_RECEIVER
 const siteURL = process.env.HEROKU_URL
 
-
 contactUsEmail = async (name, email, message) => {
     await mail.sendMail({
         from: email,

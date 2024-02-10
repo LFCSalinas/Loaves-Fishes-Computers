@@ -22,4 +22,3 @@ exports.sendMail = (mailOptions) => {
             return { success: false, message: 'Error sending email', error };
         });
 };
-

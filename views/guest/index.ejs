@@ -1,0 +1,90 @@
+<%- include("partials/header.ejs") %>
+
+<!-- MODAL -->
+<div id="modal-overlay">
+    <div id="modal">
+        <div class="modal-box-1">
+            <i class="fas fa-desktop"></i>
+            <h1>LFC</h1>
+        </div>
+        <form action="/auth/apply-email-home" method="POST" id="apply-form" class="modal-box-2">
+            <div class="flex">
+                <h1>APPLY TODAY!</h1>
+                <i class="fas fa-times" id="close-modal-btn"></i>
+            </div>
+            <p>Send us your information and a staff member will contact you soon.</p>
+            <input type="text" name="full_name" id="full-name" placeholder="Full name" maxlength="30" required>
+            <input type="text" name="phone" id="phone" placeholder="Phone" maxlength="12" required>
+            <input type="email" name="email" id="email" placeholder="Email" maxlength="100" required>
+            <button type="submit" class="g-recaptcha" data-sitekey="6LfNj-keAAAAACbPznMW6DDIxOGjMpOB6IgCAU39"
+                    data-callback="applyFormRequest">SUBMIT</button>
+            <% if(typeof success !="undefined" && success) { %>
+                <div class="alert-message-success">
+                    <%= message %>
+                </div>
+            <% } else if(typeof success !="undefined" && !success) { %>
+                <div class="alert-message-error">
+                    <%= message %>
+                </div>
+            <% } %>
+        </form>
+    </div>
+</div>
+
+<!-- IMAGE CAROUSEL -->
+<section id="showcase-carousel" class="fade">
+    <div class="showcase-carousel-overlay">
+        <div class="showcase-carousel-container-main">
+            <div class="showcase-carousel-subcontainer">
+                <div class="showcase-carousel-box scb1">
+                    <div>
+                        <h1>Loaves</h1>
+                        <h1>Fishes</h1>
+                        <h1>Computers</h1>
+                    </div>
+                    <div>
+                        <p>A proud non-profit organization!</p>
+                    </div>
+                </div>
+                <div class="showcase-carousel-box scb2">
+                    <h1>BECOME A VOLUNTEER!</h1>
+                    <a href="/mission" id="learn-more-btn">LEARN MORE</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- APPLY  -->
+<section id="apply-our-mission">
+    <div class="container">
+        <div class="subcontainer apply-our-mission-section">
+            <div>
+                <h1 style="font-style: italic;">OUR MISSION!</h1>
+            </div>
+            <div>
+                <h2>LFC volunteers and trains volunteers to serve in one of LFC’s departments. We serve as a liaison between the organization and those serving.</h2>
+            </div>
+            <div>
+                <div class="button-box" id="show-modal-button"><i class="fas fa-user-plus"></i> APPLY</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- VIDEOS -->
+<section id="videos">
+    <div class="container">
+        <div class="subcontainer videos-section">
+            <div class="video-boxes">
+                <div class="video-box"></div>
+                <div class="video-box"></div>
+                <div class="video-box"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="/js/script.js"></script>
+
+<%- include("partials/footer.ejs") %>
