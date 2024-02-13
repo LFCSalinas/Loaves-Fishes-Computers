@@ -1,25 +1,33 @@
-import * as dbService from "../../services/dbService.js";
 import jwt from 'jsonwebtoken';
 
-// Middleware function to authenticate and verify JWT token
-const authToken = (req, res, next) => {
-    // Get the token from the authorization header
-    // Format of header is "Authorization: Bearer <token>"
-    const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1]; // Extract the token
+// Middleware function to authenticate and authorize JWT token
+const authToken = (requiredRoles = []) => {
+    return (req, res, next) => {
+        const authHeader = req.headers.authorization;
+        const token = authHeader && authHeader.split(' ')[1];
 
-    // If there's no token, return an error
-    if (token == null) return res.sendStatus(401); // Unauthorized
+        if (token == null) {
+            return res.sendStatus(401); // Unauthorized: No token provided
+        }
 
-    // Verify the token
-    jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-        if (err) return res.sendStatus(403); // Forbidden - token is no longer valid
-        // If verification is successful, attach the user to the request object
-        req.user = user;
+        jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+            if (err) {
+                return res.sendStatus(403); // Forbidden: Invalid token
+            }
 
-        // Pass control to the next middleware function
-        next();
-    });
+            // Attach decoded token to request
+            req.user = decoded;
+
+            // Proceed if the user is an admin or if the userId in the token matches the userId parameter in the route
+            const isOwner = req.params.id === decoded.sub.toString(); // Assuming 'sub' in token payload is the userId
+            const isAdmin = requiredRoles.includes(decoded.role) && decoded.role === 'admin';
+
+            if (isOwner || isAdmin) {
+                next(); // User is either the owner or an admin, proceed to the next middleware or route handler
+            } else {
+                return res.status(403).json({ error: 'Access denied' }); // Forbidden: User doesn't have the right
+            }
+        });
+    };
 };
-
 export default authToken;

@@ -1,6 +1,8 @@
 # Local env file with credentials
 .env
 
+.idea
+
 # Dependency directory
 node_modules
 
