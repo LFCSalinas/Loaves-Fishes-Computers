@@ -22,10 +22,10 @@ export const getUser = async (req, res) => {
 }
 
 export const createUser = async (req, res) => {
+    const role = 'USER'
     // Create a User given data
     try{
-        const {username, password, email, role} = req.body
-
+        const {username, password, email} = req.body
         // Check for pre-existing User in database (by email)
         const fetchResult = await dbService.findUserByEmail(email);
         if (fetchResult) throw "An account with that email already exists"
@@ -59,9 +59,10 @@ export const deleteUser = async (req, res) => {
     // Delete a User by their primary key
     try{
         // Check for user
-        const user = await dbService.findUserById(req.user.id)
+        const user = await dbService.findUserById(req.params.id)
         if (user)
-            await dbService.deleteUserById(req.user.id)
+            await dbService.deleteUserById(req.params.id)
+            return res.status(200)
     } catch (err) {
         console.error(err)
     }

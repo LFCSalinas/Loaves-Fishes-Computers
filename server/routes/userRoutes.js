@@ -5,12 +5,12 @@ import express from "express";
 import authToken from "../middleware/auth.js";
 
 const userRouter = express.Router();
-// These routes require an authenticated user
-userRouter.get('/', authToken(['admin']), userController.getUsers);
-userRouter.get('/:id', authToken(['admin']), userController.getUser);
-userRouter.post('/', authToken(['admin']), Validate(schemas.createUserSchema), userController.createUser);
-userRouter.patch('/:id', authToken(['admin']), Validate(schemas.createUserSchema), userController.updateUser);
-userRouter.delete('/:id', authToken(['admin']), userController.deleteUser);
+// These routes deal with User models
+userRouter.get('/', authToken(['ADMIN']), userController.getUsers);
+userRouter.get('/:id', authToken(['ADMIN']), userController.getUser);
+userRouter.post('/', Validate(schemas.createUserSchema), userController.createUser);
+userRouter.patch('/:id', authToken(['ADMIN']), Validate(schemas.createUserSchema), userController.updateUser);
+userRouter.delete('/:id', authToken(['ADMIN']), userController.deleteUser);
 
 
 export default userRouter;

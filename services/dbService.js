@@ -41,9 +41,7 @@ export const updateUserById = async (username, password, email, role, id) => {
 
 // Delete User
 export const deleteUserById = async (id) => {
-    await jawsdb.query("DELETE from user WHERE id = ?", [id])
-    const [updatedRows] = await jawsdb.query("SELECT * FROM user WHERE id = ?", [id]);
-    return updatedRows[0];
+    await jawsdb.query("DELETE FROM user WHERE user_id = ?", [id])
 }
 
 
