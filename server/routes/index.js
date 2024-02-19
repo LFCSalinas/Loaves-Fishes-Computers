@@ -2,11 +2,13 @@
 import userRouter from './userRoutes.js'
 import { validBrowser } from "../middleware/validations/validBrowser.js";
 import baseRouter from "./baseRoutes.js";
+import volunteerRouter from "./volunteerRoutes.js";
 
 export const init_routes = (app) => {
     app.use(validBrowser)
     app.use(baseRouter)
     app.use('/user', userRouter)
+    app.use('/volunteer', volunteerRouter)
 
     app.get('*', function (req, res, next) {
         console.log('Request was made to: ' + req.originalUrl);

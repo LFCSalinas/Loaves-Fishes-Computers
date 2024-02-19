@@ -27,16 +27,16 @@ export const findUserByUsername = async (username) => {
 
 
 // Create User
-export const addUser = async (username, password, email, role) => {
+export const addUser = async (username, password, email, role, v_id) => {
     const [result] = await jawsdb.query(
-        "INSERT INTO user (username, password, email, role) VALUES (?,?,?,?)", [username, password, email, role]
+        "INSERT INTO user (username, password, email, role, volunteer_id) VALUES (?,?,?,?,?)", [username, password, email, role, v_id]
     );
     return result.insertId;
 };
 
 // Update User
-export const updateUserById = async (username, password, email, role, id) => {
-    await jawsdb.query("UPDATE user SET username = ?, password = ?, email = ?, role = ? WHERE user_id = ?", [username, password, email, role, id])
+export const updateUserById = async (username, password, email, role, v_id, id) => {
+    await jawsdb.query("UPDATE user SET username = ?, password = ?, email = ?, role = ?, volunteer_id = ? WHERE user_id = ?", [username, password, email, role, v_id, id])
 }
 
 // Delete User

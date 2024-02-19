@@ -22,7 +22,10 @@ export const getUser = async (req, res) => {
 }
 
 export const createUser = async (req, res) => {
+    // TODO: Refactor default value declaration (either into SQL or elsewhere)
     const role = 'USER'
+    const volunteer_id = null
+
     // Create a User given data
     try{
         const {username, password, email} = req.body
@@ -34,7 +37,7 @@ export const createUser = async (req, res) => {
         const hashed_pwd = await bcrypt.hash(password, 10);
 
         // Add User to database
-        const user = await dbService.addUser(username, hashed_pwd, email, role);
+        const user = await dbService.addUser(username, hashed_pwd, email, role, volunteer_id);
         return res.json(user)
 
     } catch (err) {

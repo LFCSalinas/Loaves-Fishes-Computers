@@ -33,6 +33,3 @@ export const login = async (req, res) => {
         return res.sendStatus(500);
     }
 };
-
-
-
