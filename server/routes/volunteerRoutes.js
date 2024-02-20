@@ -4,10 +4,9 @@ import express from "express";
 import authToken from "../middleware/auth.js";
 import * as volunteerController from "../controllers/volunteerController.js";
 
-const volunteerRouter = express.Router();
+const volunteerRouter = express.Router(({ mergeParams: true }));
 // These routes deal with Volunteer and identifying models
 
-// This creates several objects in the Database
 volunteerRouter.post('/', authToken(['ADMIN']), volunteerController.register);
 
 

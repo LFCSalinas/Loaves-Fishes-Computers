@@ -8,7 +8,7 @@ export const init_routes = (app) => {
     app.use(validBrowser)
     app.use(baseRouter)
     app.use('/user', userRouter)
-    app.use('/volunteer', volunteerRouter)
+    app.use('/:id/volunteer', volunteerRouter) // User_id for Auth, then volunteer endpoint. Ex: get /6/volunteer/6
 
     app.get('*', function (req, res, next) {
         console.log('Request was made to: ' + req.originalUrl);

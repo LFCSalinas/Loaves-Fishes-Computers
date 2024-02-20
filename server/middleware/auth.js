@@ -3,9 +3,12 @@ import jwt from 'jsonwebtoken';
 // Middleware function to authenticate and authorize JWT token
 const authToken = (requiredRoles = []) => {
     return (req, res, next) => {
+
+        console.log("Params:", req.params);
+
         const stack = req.route.stack
         console.log("=================================================")
-        console.log(`Authorization for: ${stack[stack.length-1].name} -> ${req.params.id}`)
+        console.log(`Authorization for User ${req.params.id} -> ${stack[stack.length-1].name}`)
 
         const authHeader = req.headers.authorization;
         const token = authHeader && authHeader.split(' ')[1];
