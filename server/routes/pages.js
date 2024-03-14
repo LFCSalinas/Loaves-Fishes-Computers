@@ -1,5 +1,5 @@
 const express = require("express");
-const dbService = require("../../services/dbService.js")
+const dbService = require("../../services/repository/dbService.js")
 
 const authController = require("../controllers/newController")
 const s3 = require("../../services/s3.js");

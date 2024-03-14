@@ -1,11 +1,14 @@
-import jwt from 'jsonwebtoken'
-import * as dbService from "../../services/dbService.js";
+import * as volunteerRepository from "../../services/repository/volunteerRepository.js";
+import * as dbService from "../../services/repository/dbService.js";
+
 import * as pdfService from "../../services/pdfService.js";
 import {promises as fs} from "fs";
-import {addUser, findUserById} from "../../services/dbService.js";
-import {use} from "bcrypt/promises.js";
+import * as addressRepository from "../../services/repository/addressRepository.js";
+import * as contactRepository from "../../services/repository/emcontactRepository.js";
 
-export const register = async (req, res) => {
+import dayjs from "dayjs";
+
+export const createVolunteer = async (req, res) => {
     try {
         const user_id = req.body.userId
         if (user_id && req.body.form){
@@ -16,10 +19,18 @@ export const register = async (req, res) => {
                 if (!volunteer_id) {
                     // Create new Volunteer record and link to User
                     // TODO: Reparent Volunteer creation to separate feature
+                    // TODO: Improve foreign record creation
                     // Signing waiver/webforms should not be the creation of a Volunteer (Field Mismatch!).
-
-                    volunteer_id = await dbService.addVolunteer({ })
+                    volunteer_id = await volunteerRepository.addVolunteer({ })
                     await dbService.linkVolunteer(user_id, volunteer_id)
+
+                    let address_id = await addressRepository.addAddress("", "", "")
+                    await volunteerRepository.linkAddress(volunteer_id, address_id)
+
+                    let contact_id = await contactRepository.addContact("", "", "", "")
+                    await volunteerRepository.linkContact(volunteer_id, contact_id)
+                    // await jobRepository.addJob("", "", "", "")
+
                 }
 
                 // CREATE SERIALIZED PDF BYTEARRAY BUFFER FROM BODY
@@ -29,7 +40,7 @@ export const register = async (req, res) => {
                 console.log(`Step 4: Volunteer record ${volunteer_id}'s 'forms' field updated to '${filename}'`)
 
                 // Update Volunteer in DB with new form (filename)
-                await dbService.updateVolunteerFormById(volunteer_id, filename)
+                await volunteerRepository.updateVolunteerFormById(volunteer_id, filename)
             }
 
             // // UPLOAD THE PDF TO AWS
@@ -54,5 +65,26 @@ export const register = async (req, res) => {
     }
 };
 
+export const getVolunteer = async (req, res) => {
+    // Get a Volunteer by their primary key
+    try {
+        const volunteer = await volunteerRepository.findVolunteerById(req.params.id)
+        return res.json(volunteer)
+    } catch (err) {
+        console.error(err)
+    }
+}
 
+export const updateVolunteer = async (req, res) =>
+{
+    // Update a Volunteer's fields
+    try {
+        const {first_name, last_name, phone, member_since, birthday, gender, active, em_contact_id, address_id, image_filename, form_filename, motivation, skills, languages, place_of_birth} = req.body
 
+        // Update Volunteer in repository
+        await volunteerRepository.updateVolunteerById(req.params.id, first_name, last_name, phone, dayjs(member_since).format('YYYY-MM-DD HH:mm:ss'), dayjs(birthday).format('YYYY-MM-DD'), gender, active, em_contact_id, address_id, image_filename, form_filename, motivation, skills, languages, place_of_birth)
+        return res.sendStatus(200)
+    } catch (err) {
+        console.log(err)
+    }
+}

@@ -1,5 +1,5 @@
 // Database Service - Decoupled Database Queries
-import jawsdb from '../server/repository/jawsdb.js'
+import jawsdb from '../../server/database/jawsdb.js'
 import 'dotenv/config.js';
 
 
@@ -45,8 +45,6 @@ export const deleteUserById = async (id) => {
 }
 
 
-
-
 export const findUsersBySearch = async (searchTerm) => {
     return await jawsdb.query("SELECT * FROM user WHERE (first_name LIKE ? OR last_name LIKE ? OR email LIKE ?) && status != 'Deleted'", ["%" + searchTerm + "%", "%" + searchTerm + "%", "%" + searchTerm + "%"]);
 }
@@ -54,63 +52,6 @@ export const findUsersBySearch = async (searchTerm) => {
 export const findAllUsersNotDeleted = async () => {
     return await jawsdb.query("SELECT * FROM user WHERE status != 'Deleted'");
 }
-
-
-
-
-// Update user | Note: This is not ideal, as it forces specific data column references. However, it is versatile.
-export const setUserDataById = async (data, id) => {
-    await jawsdb.query("UPDATE user SET ? WHERE id = ?", [data, id])
-    const [updatedRows] = await jawsdb.query("SELECT * FROM user WHERE id = ?", [id]);
-    return updatedRows[0];
-}
-
-export const activateUserByEmail = async (email) => {
-    return await jawsdb.query("UPDATE user SET status = 'Active' WHERE email = ?", [email])
-}
-
-export const activateUserById = async (id) => {
-    return await jawsdb.query("UPDATE user SET token = ?, status = 'Active' WHERE id = ?", [null, id])
-}
-
-// Delete user
-export const deleteAllUsers = async () => {
-    return await jawsdb.query("DELETE FROM user")
-}
-
-
-
-
-// Volunteer ====================================
-
 export const linkVolunteer = async (user_id, volunteer_id) => {
     return await jawsdb.query("UPDATE user SET volunteer_id = ? WHERE user_id = ?", [volunteer_id, user_id])
 }
-
-export const addVolunteer = async (volunteerData) => {
-    const { first_name, last_name, phone, member_since, birthday, gender, active,
-        em_contact_id, address_id, image_filename, form_filename, motivation, skills, languages, place_of_birth
-    } = volunteerData;
-
-    const query = `
-        INSERT INTO volunteer (
-            first_name, last_name, phone, member_since, birthday, gender, active, 
-            em_contact_id, address_id, image_filename, form_filename, motivation, 
-            skills, languages, place_of_birth
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    `;
-
-    const params = [
-        first_name, last_name, phone, member_since, birthday, gender, active,
-        em_contact_id, address_id, image_filename, form_filename, motivation, skills, languages, place_of_birth
-    ];
-
-    const [result] = await jawsdb.query(query, params);
-    return result.insertId;
-};
-export async function updateVolunteerFormById(volunteer_id, filename) {
-    return await jawsdb.query("UPDATE volunteer SET form_filename = ? WHERE volunteer_id = ?", [filename, volunteer_id])
-
-}
-
-

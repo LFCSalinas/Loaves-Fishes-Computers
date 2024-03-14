@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt'
-import * as dbService from "../../services/dbService.js";
+import * as dbService from "../../services/repository/dbService.js";
 
 export const getUsers = async (req, res) => {
     // Get all Users in table
@@ -29,14 +29,14 @@ export const createUser = async (req, res) => {
     // Create a User given data
     try{
         const {username, password, email} = req.body
-        // Check for pre-existing User in database (by email)
+        // Check for pre-existing User in repository (by email)
         const fetchResult = await dbService.findUserByEmail(email);
         if (fetchResult) throw "An account with that email already exists"
 
         // Encrypt password
         const hashed_pwd = await bcrypt.hash(password, 10);
 
-        // Add User to database
+        // Add User to repository
         const user = await dbService.addUser(username, hashed_pwd, email, role, volunteer_id);
         return res.json(user)
 
@@ -49,10 +49,11 @@ export const updateUser = async (req, res) => {
     // Update a User's fields
     try {
         // Check input is clean
-        const {username, password, email, role} = req.body
+        const {username, password, email, role, v_id, u_id} = req.body
 
-        // Update User in database
-        await dbService.updateUserById(username, password, email, role)
+        // Update User in repository
+        await dbService.updateUserById(username, password, email, role, v_id, u_id)
+        return res.sendStatus(200)
     } catch (err) {
         console.log(err)
     }
@@ -65,7 +66,7 @@ export const deleteUser = async (req, res) => {
         const user = await dbService.findUserById(req.params.id)
         if (user)
             await dbService.deleteUserById(req.params.id)
-            return res.status(200)
+            return res.sendStatus(200)
     } catch (err) {
         console.error(err)
     }

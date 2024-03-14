@@ -7,7 +7,10 @@ import * as volunteerController from "../controllers/volunteerController.js";
 const volunteerRouter = express.Router(({ mergeParams: true }));
 // These routes deal with Volunteer and identifying models
 
-volunteerRouter.post('/', authToken(['ADMIN']), volunteerController.register);
-
+// volunteerRouter.get('/', authToken(['ADMIN']), volunteerController.getVolunteers);
+volunteerRouter.get('/:id', authToken('VOLUNTEER', ['ADMIN']), volunteerController.getVolunteer);
+volunteerRouter.post('/', authToken('VOLUNTEER', ['ADMIN']), volunteerController.createVolunteer);
+volunteerRouter.put('/:id', authToken('VOLUNTEER',['ADMIN']), Validate(schemas.volunteerSchema), volunteerController.updateVolunteer);
+// volunteerRouter.delete('/:id', authToken(['ADMIN']), volunteerController.deleteVolunteer);
 
 export default volunteerRouter;

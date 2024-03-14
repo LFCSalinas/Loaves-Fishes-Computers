@@ -1,4 +1,4 @@
-const dbService = require("../../services/dbService.js")
+const dbService = require("../../services/repository/dbService.js")
 const jwt = require("jsonwebtoken");
 const {promisify} = require("util");
 const {validationResult} = require("express-validator");
